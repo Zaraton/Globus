@@ -66,82 +66,14 @@ public class game_state : MonoBehaviour
             }
         }
         //Instantiate spaceports
-        List<string>spaceports = new List<string> { "Плесецк", "Россия", "Мирный", "62,7", "40,3", "https://ru,wikipedia,org/wiki/%D0%9F%D0%BB%D0%B5%D1%81%D0%B5%D1%86%D0%BA_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-        "Байконур", "Казахстан(Россия)", "Казылы", "45,6", "63,3", "https://ru,wikipedia,org/wiki/%D0%91%D0%B0%D0%B9%D0%BA%D0%BE%D0%BD%D1%83%D1%80", 
-        "Свободный", "Россия", "Циолковский", "51,5", "138,5", "https://ru,wikipedia,org/wiki/%D0%A1%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-        "Восточный", "Россия", "Циолковский", "51,5", "138,5", "https://ru,wikipedia,org/wiki/%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-        "Капустин Яр", "Россия", "Знаменск", "48,5", "45,8", "https://ru,wikipedia,org/wiki/Капустин_Яр", 
-        "Цзьюцуань", "Китай", "Цзьюцуань", "41,1", "100,3", "https://ru,wikipedia,org/wiki/%D0%A6%D0%B7%D1%8E%D1%86%D1%8E%D0%B0%D0%BD%D1%8C_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-        "Тайюань", "Китай", "Синьчжоу", "37,8", "11,5", "https://ecoruspace,me/%D0%A2%D0%B0%D0%B9%D1%8E%D0%B0%D0%BD%D1%8C,html", 
-        "Сичан", "Китай", "Сичан", "28,1", "102,3", "https://ru,wikipedia,org/wiki/%D0%A1%D0%B8%D1%87%D0%B0%D0%BD_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)",
-         "Тонхэ(бывший Мусудан)", "КНДР", "Musudan-ri", "40,8", "129,4", "https://ru,wikipedia,org/wiki/%D0%A2%D0%BE%D0%BD%D1%85%D1%8D_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Утиноура", "Япония", "Кимоцуки(Выбший Утиноура)", "31,25", "131,1", "https://ru,wikipedia,org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B5%D0%BD%D1%82%D1%80_%D0%A3%D1%82%D0%B8%D0%BD%D0%BE%D1%83%D1%80%D0%B0", 
-         "Танегасима", "Япония", "Остров Танегасима (Кагосима)", "30,4", "131", "https://ru,wikipedia,org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B5%D0%BD%D1%82%D1%80_%D0%A2%D0%B0%D0%BD%D1%8D%D0%B3%D0%B0%D1%81%D0%B8%D0%BC%D0%B0", 
-         "Космический центр имени Сатиша Дхавана", "Индия", "Шрихарикота", "13,8", "80,3", "https://ru,wikipedia,org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%86%D0%B5%D0%BD%D1%82%D1%80_%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8_%D0%A1%D0%B0%D1%82%D0%B8%D1%88%D0%B0_%D0%94%D1%85%D0%B0%D0%B2%D0%B0%D0%BD%D0%B0", 
-         "Пальмахим", "Израиль", "Ришон-ле-Цион", "31,9", "34,7", "https://ru,wikipedia,org/wiki/%D0%9F%D0%B0%D0%BB%D1%8C%D0%BC%D0%B0%D1%85%D0%B8%D0%BC_(%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B0%D0%B7%D0%B0)", 
-         "Вумера", "Австралия(арендуется Великобританией)", "", "31,1", "136,8,", "https://ru,wikipedia,org/wiki/%D0%92%D1%83%D0%BC%D0%B5%D1%80%D0%B0", 
-         "Сан Марко", "Кения(арендуется Италией)", "Малинди", "2,9", "40,2", "https://ru,wikipedia,org/wiki/%D0%A1%D0%B0%D0%BD-%D0%9C%D0%B0%D1%80%D0%BA%D0%BE_(%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Хаммагир", "Алжир(арендуется Францией)", "", "30,9", "3,1,", "https://ru,wikipedia,org/wiki/%D0%A5%D0%B0%D0%BC%D0%BC%D0%B0%D0%B3%D0%B8%D1%80", 
-         "Алкантара", "Бразилия", "", "2,3", "44,4,", "https://ru,wikipedia,org/wiki/%D0%90%D0%BB%D0%BA%D0%B0%D0%BD%D1%82%D0%B0%D1%80%D0%B0_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Куру", "Франзуцская Гвиана", "Куру и Синнамари", "5,2", "52,73", "https://ru,wikipedia,org/wiki/%D0%9A%D1%83%D1%80%D1%83_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Мыс Канаверал", "США", "Штаб квартира Флорида", "28,4", "80,5,", "https://ru,wikipedia,org/wiki/%D0%91%D0%B0%D0%B7%D0%B0_%D0%92%D0%92%D0%A1_%D0%A1%D0%A8%D0%90_%D0%BD%D0%B0_%D0%BC%D1%8B%D1%81%D0%B5_%D0%9A%D0%B0%D0%BD%D0%B0%D0%B2%D0%B5%D1%80%D0%B0%D0%BB", 
-         "Уоллопс", "США", "Штат Вирджиния", "37,8", "75,5,", "https://ru,wikipedia,org/wiki/%D0%A3%D0%BE%D0%BB%D0%BB%D0%BE%D0%BF%D1%81", 
-         "Ванденберг", "США", "Ломпок", "34,6", "120,5,", "https://ru,wikipedia,org/wiki/%D0%91%D0%B0%D0%B7%D0%B0_%D0%92%D0%B0%D0%BD%D0%B4%D0%B5%D0%BD%D0%B1%D0%B5%D1%80%D0%B3", 
-         "Морской старт", "Международный", "Тихий океан", "3", "157,", "https://ru,wikipedia,org/wiki/%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D1%81%D1%82%D0%B0%D1%80%D1%82", 
-         "Кадьяк", "США", "Аляска", "57,3", "152,2,", "https://ru,wikipedia,org/wiki/%D0%9A%D0%B0%D0%B4%D1%8C%D1%8F%D0%BA_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Аль-анбар", "Ирак", "", "32,5", "44,6", "https://astro-obzor,ru/al-anbar-al-anbar-irak/", "Семнан", "Иран", "", "35,1", "53,5", "https://ru,wikipedia,org/wiki/%D0%A1%D0%B5%D0%BC%D0%BD%D0%B0%D0%BD_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)", 
-         "Ясный", "Россия", "", "51", "59,5", "https://ru,wikipedia,org/wiki/%D0%AF%D1%81%D0%BD%D1%8B%D0%B9_(%D0%BF%D1%83%D1%81%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%B1%D0%B0%D0%B7%D0%B0)", 
-         "Кваджелейн", "США", "Атолл в тихом океане", "", "", "https://ecoruspace,me/%D0%9A%D0%B2%D0%B0%D0%B4%D0%B6%D0%B5%D0%BB%D0%B5%D0%B9%D0%BD,html", 
-         "Вэньчан", "Китай", "о, Хайнань", "19,4", "110,5", "https://ru,wikipedia,org/wiki/%D0%92%D1%8D%D0%BD%D1%8C%D1%87%D0%B0%D0%BD_(%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D0%B4%D1%80%D0%BE%D0%BC)" };
         
         
-        List<Spaceport> list = new List<Spaceport>();
-        list.Add(new Spaceport("Плесецк", "Россия", "Мирный", 62.7, 40.3,"TestInfo"));
-        list.Add(new Spaceport("Байконур", "Казахстан(Россия)", "Казылы", 45.6, 63.3,"TestInfo1"));
-        list.Add(new Spaceport("Свободный", "Россия", "Циолковский", 51.5, 138.5,"___"));
-        list.Add(new Spaceport("Восточный", "Россия", "Циолковский", 51.5, 138.5,"___"));       
-        list.Add(new Spaceport("Капустин Яр", "Россия", "Знаменск", 48.5, 45.8,"___"));   
-        list.Add(new Spaceport("Цзьюцуань", "Китай", "Цзьюцуань", 41.1, 100.3,"___"));   
-        list.Add(new Spaceport("Тайюань", "Китай", "Синьчжоу", 37.8, 11.5,"___"));   
-        list.Add(new Spaceport("Сичан", "Китай", "Сичан", 28.1, 102.3,"___"));
-        list.Add(new Spaceport("Тонхэ(бывший Мусудан)", "КНДР", "Musudan-ri", 40.8, 129.4,"___"));
-        list.Add(new Spaceport("Утиноура", "Япония", "Кимоцуки(Выбший Утиноура)", 31.25, 131.1,"___"));   
-        list.Add(new Spaceport("Танегасима", "Япония", "Остров Танегасима (Кагосима)", 30.4, 131,"___"));
-        list.Add(new Spaceport("Космический центр имени Сатиша Дхавана", "Индия", "Шрихарикота", 13.8, 80.3,"___"));
-        list.Add(new Spaceport("Пальмахим", "Израиль", "Ришон-ле-Цион", 31.9, 34.7,"___"));
-        list.Add(new Spaceport("Вумера", "Австралия(арендуется Великобританией)", "", 31.1, 136.8,"___"));
-        list.Add(new Spaceport("Сан Марко", "Кения(арендуется Италией)", "Малинди", 2.9, 40.2,"___"));
-        list.Add(new Spaceport("Хаммагир", "Алжир(арендуется Францией)", "", 30.9, 3.1,"___"));
-        list.Add(new Spaceport("Алкантара", "Бразилия", "", 2.3, 44.4,"___"));
-        list.Add(new Spaceport("Куру", "Франзуцская Гвиана", "Куру и Синнамари", 5.2, 52.73,"___"));
-        list.Add(new Spaceport("Мыс Канаверал", "США", "Штаб квартира Флорида", 28.4, 80.5,"___"));
-        list.Add(new Spaceport("Уоллопс", "США", "Штат Вирджиния", 37.8, 75.5,"___"));
-        list.Add(new Spaceport("Ванденберг", "США", "Ломпок", 34.6, 120.5,"___"));
-        list.Add(new Spaceport("Морской старт", "Международный", "Тихий океан", 3, 157,"___"));
-        list.Add(new Spaceport("Кадьяк", "США", "Аляска", 57.3, 152.2,"___"));
-        list.Add(new Spaceport("Аль-анбар", "Ирак", "", 32.5, 44.6,"___"));
-        list.Add(new Spaceport("Ясный", "Россия", "", 51, 59.5,"___"));
-        list.Add(new Spaceport("Кваджелейн", "США", "Атолл в тихом океане", 0, 0,"___"));
-        list.Add(new Spaceport("Вэньчан", "Китай", "о, Хайнань", 19.4, 110.5,"___"));
-
-
-
         
 
-        SpaceportList SpList = new SpaceportList(list);
-        Debug.Log("string1 = "+SpList.SpList[0].Name); 
+        SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadSpacePortsFromFile("Spaceports.json"));
 
-
-        string json = JsonUtility.ToJson(SpList,true);
-        Debug.Log("Json string = "+json);      
-
-        WriteDataToFile(json);
-
-        SpaceportList SpList1 = JsonUtility.FromJson<SpaceportList>(json);
-
-        Debug.Log("After Json = "+SpList1.SpList[0].Name); 
-
-        foreach (Spaceport Sp in SpList1.SpList)
+      
+        foreach (Spaceport Sp in SpList.SpList)
         {
             Debug.Log("Spawning: "+ Sp.Name);
             GameObject prefab = Resources.Load("Космодром") as GameObject;
@@ -161,5 +93,10 @@ public class game_state : MonoBehaviour
      #if UNITY_EDITOR
      UnityEditor.AssetDatabase.Refresh ();
      #endif
+    }
+    public static string ReadSpacePortsFromFile (string filename)
+    {
+     string path = Application.dataPath +"/"+ filename;
+     return File.ReadAllText(path);     
     }
 }
