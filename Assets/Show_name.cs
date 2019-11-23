@@ -8,6 +8,7 @@ using System.IO;
 
 public class Show_name : MonoBehaviour
 {
+    UI_Info_handler Info_Handler;
     private string text;
     public int textSize = 14;
     public Font textFont;
@@ -17,7 +18,6 @@ public class Show_name : MonoBehaviour
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
     private string textShadow;
-    public bool ObjectChoosed = false;
    // public string path;
    // private Show_name showname;
    // private MeshRenderer MeshRen;
@@ -29,6 +29,8 @@ public class Show_name : MonoBehaviour
         if (cam == null)
             cam = Camera.main;
         text = gameObject.name.Replace("(Clone)", string.Empty);
+
+        Info_Handler = GameObject.Find("UI_Info").GetComponent<UI_Info_handler>();
     }
   
     // Update is called once per frame
@@ -75,18 +77,17 @@ public class Show_name : MonoBehaviour
     {
         if (!game_state.textDisplayed)
         {
+            Debug.Log("My name is jfef oh soryy " + text);
+            Spaceport info_struct = new Spaceport(text, "", "", 0, 0, Information); // TODO: Поменять это просто на "взять поле у объекта"
+            Info_Handler.Show_Object_Info(info_struct, this.gameObject);
             // this object was clicked - do something
-            GameObject.Find("Close_Button").GetComponent<Image>().enabled = true;
-            Text info_text = GameObject.Find("Text_Canvas").GetComponent<Text>();
+            /*Text info_text = GameObject.Find("Text_Canvas").GetComponent<Text>();
             info_text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
             info_text.text = Information;
             info_text.alignment = TextAnchor.MiddleCenter;
             //Text_window.transform.localPosition = new Vector3(0, 0, 0);
             info_text.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
-            info_text.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
-            
-            game_state.ChoosedObject = transform.gameObject;
-            game_state.textDisplayed = true;
+            info_text.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);*/
         }
 
     }
