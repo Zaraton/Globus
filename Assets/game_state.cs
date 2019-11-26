@@ -11,7 +11,10 @@ public class game_state : MonoBehaviour
     private void Start()
     {
         //Get screen size to place choosed object near camera
-        Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - Screen.width/2, 0, Camera.main.transform.position.z + distanceToCam);
+        Debug.Log((float)Math.Tan(Camera.main.fieldOfView / 2));
+        Debug.Log((Camera.main.fieldOfView));
+
+        Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - ((distanceToCam*(float)Math.Tan(Camera.main.fieldOfView/2*Math.PI/180))), 0, Camera.main.transform.position.z + distanceToCam);
         //Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - distanceToCam * (float)Math.Tan(Camera.main.fieldOfView/2 * (float)Math.PI / 180), 0, Camera.main.transform.position.z + distanceToCam);
         //Instantiate objects
         GameObject earth = GameObject.Find("EarthHigh");

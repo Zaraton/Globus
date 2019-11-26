@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Earth_Rad: 6378.135
-  latit: 31.1
-  longit: 34.7
+  latit: 19.4
+  longit: 110.5
   height: 0
   target: {fileID: 0}
 --- !u!114 &1004527118575860655
@@ -71,8 +71,7 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  ObjectChoosed: 0
-  Information: https://ru,wikipedia,org/wiki/%D0%9F%D0%B0%D0%BB%D1%8C%D0%BC%D0%B0%D1%85%D0%B8%D0%BC_(%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B0%D0%B7%D0%B0)
+  Information: ___
 --- !u!65 &1004527118575860640
 BoxCollider:
   m_ObjectHideFlags: 0
