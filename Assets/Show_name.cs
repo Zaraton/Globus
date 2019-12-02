@@ -75,7 +75,7 @@ public class Show_name : MonoBehaviour
     }
     void OnMouseDown()
     {
-        if (!game_state.textDisplayed)
+        if (!game_state.ChoosedObject)
         {
             Debug.Log("My name is jfef oh soryy " + text);
             Spaceport info_struct = new Spaceport(text, "", "", 0, 0, Information); // TODO: Поменять это просто на "взять поле у объекта"

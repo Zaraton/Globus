@@ -18,7 +18,6 @@ public class UI_Info_handler : MonoBehaviour
     public void Show_Object_Info(Spaceport Info_Object, GameObject Selected_Object)
     {
         Wrapper.SetActive(true);
-        game_state.textDisplayed = true;
         game_state.ChoosedObject = Selected_Object;
 
         // Parse text data
@@ -29,9 +28,8 @@ public class UI_Info_handler : MonoBehaviour
     public void Close_Object_Info()
     {
         Wrapper.SetActive(false);
-        game_state.textDisplayed = false;
 
-        game_state.ChoosedObject.transform.SetParent(GameObject.Find("ImageTarget").transform);
+        game_state.ChoosedObject.transform.SetParent(game_state.ImageTarget.transform);
         game_state.ChoosedObject = null;
         
     }

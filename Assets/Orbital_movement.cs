@@ -30,18 +30,19 @@ public class Orbital_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        oldPos = this.transform;
+        oldPos = transform;
         if (transform.gameObject != game_state.ChoosedObject)
         {
             //Parse three line element
-            EpochTime nowtime = new EpochTime(DateTime.UtcNow);
-            System.Console.Write(nowtime.ToString() + "\n");
-            Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, nowtime, One_Sgp4.Sgp4.wgsConstant.WGS_84);
+            EpochTime nowtime = new EpochTime(DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier));
+            Debug.Log((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds);
+
+            Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, nowtime, Sgp4.wgsConstant.WGS_84);
             //Calculate Latitude, longitude and height for satellite on Earth
-            Coordinate coordinate = SatFunctions.calcSatSubPoint(nowtime, satPos, One_Sgp4.Sgp4.wgsConstant.WGS_84);
+            Coordinate coordinate = SatFunctions.calcSatSubPoint(nowtime, satPos, Sgp4.wgsConstant.WGS_84);
             Point3d Spheric = SatFunctions.calcSphericalCoordinate(coordinate, nowtime, satPos);
             //Transform polar coordinates into decart
-            double latit = (coordinate.getLatetude()); //В БИБЛИОТЕКЕ ПЕРЕПУТАНЫ ШИРОТА И ДОЛГОТА
+            double latit = (coordinate.getLatetude());
             double longit = (coordinate.getLongitude());
             height = (coordinate.getHeight());
             if (height > 15000) //If object too far from Earth - make it closer
