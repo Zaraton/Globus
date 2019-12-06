@@ -11,7 +11,7 @@ public class UI_Info_handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Close_Object_Info();
+        Wrapper.SetActive(false);
     }
 
     // Update is called once per frame

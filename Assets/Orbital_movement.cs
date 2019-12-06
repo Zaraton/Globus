@@ -35,7 +35,7 @@ public class Orbital_movement : MonoBehaviour
         {
             //Parse three line element
             EpochTime nowtime = new EpochTime(DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier));
-            Debug.Log((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds);
+            
 
             Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, nowtime, Sgp4.wgsConstant.WGS_84);
             //Calculate Latitude, longitude and height for satellite on Earth

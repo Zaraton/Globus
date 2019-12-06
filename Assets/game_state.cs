@@ -9,7 +9,7 @@ public class game_state : MonoBehaviour
     public static GameObject ChoosedObject = null;
     public static float distanceToCam = 3000f;
     public static GameObject ImageTarget;
-    public static float TimeMultiplier = 1;
+    public static float TimeMultiplier = 0;
     public static DateTime MultiplierStart = DateTime.UtcNow;
     private void Start()
     {
@@ -19,9 +19,9 @@ public class game_state : MonoBehaviour
         Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - ((distanceToCam * (float)Math.Tan(Camera.main.fieldOfView / 2 * Math.PI / 180))), 0, Camera.main.transform.position.z + distanceToCam);
 
         //Change canvas aspect ratio to screen's
-        RectTransform info_text = GameObject.Find("UI_Canvas").GetComponent<RectTransform>();
+        /*RectTransform info_text = GameObject.Find("UI_Canvas").GetComponent<RectTransform>();
         info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
-        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);*/
 
         //Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - distanceToCam * (float)Math.Tan(Camera.main.fieldOfView/2 * (float)Math.PI / 180), 0, Camera.main.transform.position.z + distanceToCam);
         //Instantiate objects
@@ -81,10 +81,15 @@ public class game_state : MonoBehaviour
     }
     public void ChangeMultiplier(float speed)
     {
-        if (TimeMultiplier == 1)
+        if (TimeMultiplier == 0)
         {
             MultiplierStart = DateTime.UtcNow;
         }
-        TimeMultiplier = speed;
+        if(TimeMultiplier == speed)
+        {
+            TimeMultiplier = 0f;
+        }
+        else
+            TimeMultiplier = speed;
     }
 }
