@@ -6,7 +6,6 @@ using System;
 
 public class GeoPoint : MonoBehaviour
 {
-    public float Earth_Rad = 6378.135F;
     public double latit;
     public double longit;
     public float height;
@@ -15,9 +14,9 @@ public class GeoPoint : MonoBehaviour
     void Start()
     {
         //Transform polar coordinates to scene coordinates 
-        float x = (Earth_Rad + (float)height) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
-        float z = (Earth_Rad + (float)height) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
-        float y = (Earth_Rad + (float)height) * (float)Math.Sin(latit * Math.PI / 180);
+        float x = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
+        float z = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
+        float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
         transform.position = new Vector3(x, y, z);
         if (target == null)
             target = GameObject.Find("EarthHigh").transform;
@@ -37,12 +36,12 @@ public class GeoPoint : MonoBehaviour
         if (Physics.Raycast(transform.position, Camera.main.transform.position))
         {
             transform.GetComponent<Show_name>().enabled = false;
-            transform.GetChild(0).transform.GetChild(0).transform.GetComponent<MeshRenderer>().enabled = false;
+            transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
-            transform.GetComponent<Show_name>().enabled = true;
-            transform.GetChild(0).transform.GetChild(0).transform.GetComponent<MeshRenderer>().enabled = true;
+      //      transform.GetComponent<Show_name>().enabled = true;
+      //      transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

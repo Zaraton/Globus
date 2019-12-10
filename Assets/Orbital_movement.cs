@@ -13,7 +13,6 @@ public class Orbital_movement : MonoBehaviour
     public string Sat_Name= "ISS 1";
     private Tle tle;
     private Coordinate coordinate;
-    public float Earth_Rad = 6378.135F;
     public Transform target;
     private Vector3 newPos;  //possition on last frame
     private Transform oldPos;  //position on new frame
@@ -35,8 +34,6 @@ public class Orbital_movement : MonoBehaviour
         {
             //Parse three line element
             EpochTime nowtime = new EpochTime(DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier));
-            Debug.Log((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds);
-
             Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, nowtime, Sgp4.wgsConstant.WGS_84);
             //Calculate Latitude, longitude and height for satellite on Earth
             Coordinate coordinate = SatFunctions.calcSatSubPoint(nowtime, satPos, Sgp4.wgsConstant.WGS_84);
@@ -47,9 +44,9 @@ public class Orbital_movement : MonoBehaviour
             height = (coordinate.getHeight());
             if (height > 15000) //If object too far from Earth - make it closer
                 height = height / 2;
-            float x = (Earth_Rad + (float)height) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
-            float z = (Earth_Rad + (float)height) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
-            float y = (Earth_Rad + (float)height) * (float)Math.Sin(latit * Math.PI / 180);
+            float x = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
+            float z = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
+            float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
             newPos = new Vector3(x, y, z);
             transform.position = Vector3.Lerp(newPos, oldPos.position, m);
             //Make object look at Earth
@@ -61,9 +58,19 @@ public class Orbital_movement : MonoBehaviour
             transform.rotation = rotation;
 
             if (Physics.Raycast(transform.position, Camera.main.transform.position))
-                transform.GetComponent<MeshRenderer>().enabled = false;
+            {
+                var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
+                foreach (var component in rendererComponents)
+                    component.enabled = false;
+                transform.GetComponent<Show_name>().enabled = false;
+            }
             else
-                transform.GetComponent<MeshRenderer>().enabled = true;
+            {
+                var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
+      //          foreach (var component in rendererComponents)
+        //            component.enabled = true;
+          //      transform.GetComponent<Show_name>().enabled = true;
+            }
         }
         else //Get model close to camera
         {
@@ -74,17 +81,6 @@ public class Orbital_movement : MonoBehaviour
             }
             newPos = transform.parent.position;
             transform.position = Vector3.Lerp(newPos, oldPos.position, m);
-            /*
-            Vector3 ToScreenPos = new Vector3(Screen.width / 4, Screen.height / 2, -100);
-            //this.transform.parent.GetComponent<Orbital_movement>
-            float z = Camera.main.transform.position.z+2000;
-            Ray ray = Camera.main.ScreenPointToRay(ToScreenPos);
-            Plane xy = new Plane(Vector3.forward, new Vector3(0, 0, z));
-            float distance;
-            xy.Raycast(ray, out distance);
-            newPos = ray.GetPoint(distance);
-            transform.position = Vector3.Lerp(newPos, oldPos.position, m);
-            // this.transform.parent.transform.position = cam.ScreenToWorldPoint(ToScreenPos);*/
         }
     }
 }

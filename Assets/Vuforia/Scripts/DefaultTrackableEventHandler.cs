@@ -110,13 +110,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     {
         if (mTrackableBehaviour)
         {
-            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
+            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<MeshRenderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
 
             // Disable rendering:
             foreach (var component in rendererComponents)
                 component.enabled = false;
+
 
             // Disable colliders:
             foreach (var component in colliderComponents)

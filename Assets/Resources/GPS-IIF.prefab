@@ -129,7 +129,6 @@ MonoBehaviour:
   tle1: 1 28474U 04045A   19297.86530404 -.00000038 +00000-0 +00000-0 0  9998
   tle2: 2 28474 054.8109 062.4942 0195265 262.2810 053.8721 02.00576668109747
   Sat_Name: NAVSTAR 56 (USA 180)
-  Earth_Rad: 6378.135
   target: {fileID: 0}
   height: 0
 --- !u!205 &8467320013196148676
@@ -140,13 +139,13 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8467320013196148683}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: -0.000061035156, z: 87.04028}
+  m_LocalReferencePoint: {x: 0, y: 0, z: 87.04028}
   m_Size: 2102.5027
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.35368642
+  - screenRelativeHeight: 0.2479529
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8467320014241565499}
@@ -162,7 +161,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8467320013196148683}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e8ffcb06e905494aae4407f5c3fc5d0, type: 3}
   m_Name: 

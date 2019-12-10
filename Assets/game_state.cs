@@ -9,10 +9,15 @@ public class game_state : MonoBehaviour
     public static GameObject ChoosedObject = null;
     public static float distanceToCam = 3000f;
     public static GameObject ImageTarget;
-    public static float TimeMultiplier = 1;
+    public static float TimeMultiplier = 0f;
+    public static bool IsTracking = false;
+    public static float RealEarthRad = 6378.135F; // 3 переменный для соотношения габаритов сцены и реальных
+    public static float GameEarthRad = 6378.135F/8; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат
+    public static float GameToRealEarthCor = 1F; // и северный полюс расположен вдоль мировой оси y
     public static DateTime MultiplierStart = DateTime.UtcNow;
     private void Start()
     {
+        GameToRealEarthCor = GameEarthRad / RealEarthRad;
         //Get screen size to place choosed object near camera
         Debug.Log((float)Math.Tan(Camera.main.fieldOfView / 2));
         Debug.Log((Camera.main.fieldOfView));
@@ -25,7 +30,7 @@ public class game_state : MonoBehaviour
 
         //Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - distanceToCam * (float)Math.Tan(Camera.main.fieldOfView/2 * (float)Math.PI / 180), 0, Camera.main.transform.position.z + distanceToCam);
         //Instantiate objects
-        GameObject earth = GameObject.Find("EarthHigh");
+        GameObject earth = GameObject.Find("Earth");
         ImageTarget = GameObject.Find("ImageTarget");
 
 
@@ -81,10 +86,15 @@ public class game_state : MonoBehaviour
     }
     public void ChangeMultiplier(float speed)
     {
-        if (TimeMultiplier == 1)
+        if (TimeMultiplier == 0f)
         {
             MultiplierStart = DateTime.UtcNow;
         }
-        TimeMultiplier = speed;
+        if (TimeMultiplier == speed)
+        {
+            TimeMultiplier = 0f;
+        }
+        else
+            TimeMultiplier = speed;
     }
 }
