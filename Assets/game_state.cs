@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using One_Sgp4;
+using UnityEngine.UI;
 
 public class game_state : MonoBehaviour
 {
     public static GameObject ChoosedObject = null;
-    public static float distanceToCam = 3000f;
+    public float distanceToCam;
     public static GameObject ImageTarget;
     public static float TimeMultiplier = 0f;
     public static bool IsTracking = false;
@@ -15,6 +16,8 @@ public class game_state : MonoBehaviour
     public static float GameEarthRad = 6378.135F/8; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат
     public static float GameToRealEarthCor = 1F; // и северный полюс расположен вдоль мировой оси y
     public static DateTime MultiplierStart = DateTime.UtcNow;
+    public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
+    public Text SimulationTime;
     private void Start()
     {
         GameToRealEarthCor = GameEarthRad / RealEarthRad;
@@ -47,17 +50,20 @@ public class game_state : MonoBehaviour
                 prefab.transform.GetComponent<Orbital_movement>().tle2 = sats[i + 2];
                 prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
                 prefab.transform.GetComponent<Show_name>().Information = sats[i + 4];
-                Instantiate(prefab, ImageTarget.transform);
+                if (ImageTarget)
+                    Instantiate(prefab, ImageTarget.transform);
+                else //для теста без AR
+                { 
+                    GameObject newObject = Instantiate(prefab);
+                    newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                }
             }
         }
+        
+        
         //Instantiate spaceports
-
-
-
-
         SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadSpacePortsFromFile("Spaceports.json"));
-
-
+   
         foreach (Spaceport Sp in SpList.SpList)
         {
             Debug.Log("Spawning: " + Sp.Name);
@@ -67,8 +73,23 @@ public class game_state : MonoBehaviour
             prefab.transform.GetComponent<GeoPoint>().longit = Sp.Longitude;
             prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
             prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
-            Instantiate(prefab, ImageTarget.transform);
+            if (ImageTarget)
+                Instantiate(prefab, ImageTarget.transform);
+            else//для теста без AR
+            { 
+                GameObject newObject = Instantiate(prefab);
+                newObject.transform.localScale = new Vector3(100, 100, 100);
+            }
         }
+    }
+    private void Update()
+    {
+        //World simulation timer
+        nowtime = new EpochTime((DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier)).ToLocalTime());
+        Debug.Log(nowtime);
+        DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(nowtime.toDateTime(), DateTimeKind.Utc);
+        DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
+        SimulationTime.text = localVersion.ToString();
     }
     public static void WriteDataToFile(string jsonString)
     {

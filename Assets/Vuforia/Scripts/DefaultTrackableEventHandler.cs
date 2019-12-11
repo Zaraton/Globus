@@ -87,7 +87,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     {
         if (mTrackableBehaviour)
         {
-            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
+            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<MeshRenderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
 

@@ -40,8 +40,8 @@ public class GeoPoint : MonoBehaviour
         }
         else
         {
-      //      transform.GetComponent<Show_name>().enabled = true;
-      //      transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
+            transform.GetComponent<Show_name>().enabled = true;
+            transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

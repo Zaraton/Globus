@@ -28,8 +28,10 @@ public class UI_Info_handler : MonoBehaviour
     public void Close_Object_Info()
     {
         Wrapper.SetActive(false);
-
-        game_state.ChoosedObject.transform.SetParent(game_state.ImageTarget.transform);
+        if(game_state.ImageTarget)
+            game_state.ChoosedObject.transform.SetParent(game_state.ImageTarget.transform);
+        else //для теста без AR
+            game_state.ChoosedObject.transform.parent = null;
         game_state.ChoosedObject = null;
         
     }

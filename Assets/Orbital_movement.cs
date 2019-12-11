@@ -33,11 +33,11 @@ public class Orbital_movement : MonoBehaviour
         if (transform.gameObject != game_state.ChoosedObject)
         {
             //Parse three line element
-            EpochTime nowtime = new EpochTime(DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier));
-            Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, nowtime, Sgp4.wgsConstant.WGS_84);
+            
+            Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, game_state.nowtime, Sgp4.wgsConstant.WGS_84);
             //Calculate Latitude, longitude and height for satellite on Earth
-            Coordinate coordinate = SatFunctions.calcSatSubPoint(nowtime, satPos, Sgp4.wgsConstant.WGS_84);
-            Point3d Spheric = SatFunctions.calcSphericalCoordinate(coordinate, nowtime, satPos);
+            Coordinate coordinate = SatFunctions.calcSatSubPoint(game_state.nowtime, satPos, Sgp4.wgsConstant.WGS_84);
+            Point3d Spheric = SatFunctions.calcSphericalCoordinate(coordinate, game_state.nowtime, satPos);
             //Transform polar coordinates into decart
             double latit = (coordinate.getLatetude());
             double longit = (coordinate.getLongitude());
@@ -51,7 +51,7 @@ public class Orbital_movement : MonoBehaviour
             transform.position = Vector3.Lerp(newPos, oldPos.position, m);
             //Make object look at Earth
             if (target == null) // If no target - make Earth a target
-                target = GameObject.Find("EarthHigh").transform;
+                target = GameObject.Find("Earth").transform;
             Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
             Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
 
@@ -67,9 +67,9 @@ public class Orbital_movement : MonoBehaviour
             else
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
-      //          foreach (var component in rendererComponents)
-        //            component.enabled = true;
-          //      transform.GetComponent<Show_name>().enabled = true;
+                foreach (var component in rendererComponents)
+                    component.enabled = true;
+                transform.GetComponent<Show_name>().enabled = true;
             }
         }
         else //Get model close to camera
