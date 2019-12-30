@@ -61,6 +61,7 @@ public class Orbital_movement : MonoBehaviour
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
                 foreach (var component in rendererComponents)
+
                     component.enabled = false;
                 transform.GetComponent<Show_name>().enabled = false;
             }

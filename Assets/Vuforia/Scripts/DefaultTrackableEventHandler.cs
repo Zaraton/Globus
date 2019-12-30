@@ -90,11 +90,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<MeshRenderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
-
+           // mTrackableBehaviour.GetComponent<>
             // Enable rendering:
             foreach (var component in rendererComponents)
-                component.enabled = true;
-
+               component.enabled = true;
+               
             // Enable colliders:
             foreach (var component in colliderComponents)
                 component.enabled = true;
@@ -102,6 +102,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             // Enable canvas':
             foreach (var component in canvasComponents)
                 component.enabled = true;
+
+          
         }
     }
 
@@ -116,8 +118,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
             // Disable rendering:
             foreach (var component in rendererComponents)
-                component.enabled = false;
-
+            { component.enabled = false; Debug.Log("Visible? = " + component.isVisible); }
 
             // Disable colliders:
             foreach (var component in colliderComponents)

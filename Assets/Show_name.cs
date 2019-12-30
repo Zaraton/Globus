@@ -13,7 +13,7 @@ public class Show_name : MonoBehaviour
     public int textSize = 14;
     public Font textFont;
     public Color textColor = Color.white;
-    public float textHeight =250f;
+    public float textHeight =250f*game_state.GameToRealEarthCor;
     public bool showShadow = true;
     public Color shadowColor = new Color(0, 0, 0, 0.5f);
     public Vector2 shadowOffset = new Vector2(1, 1);
@@ -26,6 +26,7 @@ public class Show_name : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textHeight = 250f * game_state.GameToRealEarthCor;
         if (cam == null)
             cam = Camera.main;
         text = gameObject.name.Replace("(Clone)", string.Empty);

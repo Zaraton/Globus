@@ -13,7 +13,7 @@ public class game_state : MonoBehaviour
     public static float TimeMultiplier = 0f;
     public static bool IsTracking = false;
     public static float RealEarthRad = 6378.135F; // 3 переменный для соотношения габаритов сцены и реальных
-    public static float GameEarthRad = 6378.135F/8; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат
+    public static float GameEarthRad = 6378.135F/80; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат
     public static float GameToRealEarthCor = 1F; // и северный полюс расположен вдоль мировой оси y
     public static DateTime MultiplierStart = DateTime.UtcNow;
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
@@ -62,8 +62,8 @@ public class game_state : MonoBehaviour
         
         
         //Instantiate spaceports
-        SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadSpacePortsFromFile("Spaceports.json"));
-   
+        SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadSpacePortsFromFile("SpacePorts"));
+        Debug.Log("json: " + ReadSpacePortsFromFile("SpacePorts"));
         foreach (Spaceport Sp in SpList.SpList)
         {
             Debug.Log("Spawning: " + Sp.Name);
@@ -86,7 +86,7 @@ public class game_state : MonoBehaviour
     {
         //World simulation timer
         nowtime = new EpochTime((DateTime.UtcNow.AddSeconds((DateTime.UtcNow - game_state.MultiplierStart).TotalSeconds * game_state.TimeMultiplier)).ToLocalTime());
-        Debug.Log(nowtime);
+        //Debug.Log(nowtime);
         DateTime runtimeKnowsThisIsUtc = DateTime.SpecifyKind(nowtime.toDateTime(), DateTimeKind.Utc);
         DateTime localVersion = runtimeKnowsThisIsUtc.ToLocalTime();
         SimulationTime.text = localVersion.ToString();
@@ -102,8 +102,8 @@ public class game_state : MonoBehaviour
     }
     public static string ReadSpacePortsFromFile(string filename)
     {
-        string path = Application.dataPath + "/" + filename;
-        return File.ReadAllText(path);
+        TextAsset file = Resources.Load(filename) as TextAsset; 
+        return file.ToString();
     }
     public void ChangeMultiplier(float speed)
     {
