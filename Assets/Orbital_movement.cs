@@ -18,6 +18,8 @@ public class Orbital_movement : MonoBehaviour
     private Transform oldPos;  //position on new frame
     public double height;
     private float m = 0.9F;
+    Vector3 mPosDelta = Vector3.zero;
+    Vector3 mPrevPos = Vector3.zero;
     // Start is called before the first frame update    
     void Start()
     {
@@ -49,15 +51,15 @@ public class Orbital_movement : MonoBehaviour
             float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
             newPos = new Vector3(x, y, z);
             transform.position = Vector3.Lerp(newPos, oldPos.position, m);
+            
             //Make object look at Earth
             if (target == null) // If no target - make Earth a target
                 target = GameObject.Find("Earth").transform;
             Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
             Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
-
             transform.rotation = rotation;
 
-            if (Physics.Raycast(transform.position, Camera.main.transform.position))
+            if (Physics.Raycast(transform.position, Camera.main.transform.position) || (!game_state.IsTracking))
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
                 foreach (var component in rendererComponents)
@@ -82,6 +84,14 @@ public class Orbital_movement : MonoBehaviour
             }
             newPos = transform.parent.position;
             transform.position = Vector3.Lerp(newPos, oldPos.position, m);
+           // transform.rotation.eulerAngles.Set(0,0,0);
+            if (Input.GetMouseButton(0))
+            {
+                mPosDelta = Input.mousePosition - mPrevPos;
+                transform.Rotate(transform.up, Vector3.Dot(mPosDelta,Camera.main.transform.right), Space.World);
+                transform.Rotate(Camera.main.transform.right, Vector3.Dot(mPosDelta,Camera.main.transform.up), Space.World);
+            }
+            mPrevPos = Input.mousePosition;
         }
     }
 }

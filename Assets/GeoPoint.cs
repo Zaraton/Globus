@@ -28,12 +28,13 @@ public class GeoPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Resize with distance to camera
         float dist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float size = dist / 20000;
         if(size < 0.03608918)
             transform.localScale = new Vector3(size,size,size);
-        if (Physics.Raycast(transform.position, Camera.main.transform.position))
+        if (Physics.Raycast(transform.position, Camera.main.transform.position) || (!game_state.IsTracking))
         {
             transform.GetComponent<Show_name>().enabled = false;
             transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = false;
