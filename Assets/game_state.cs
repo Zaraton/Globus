@@ -15,7 +15,7 @@ public class game_state : MonoBehaviour
     public static float TimeMultiplier = 0f;
     public static bool IsTracking = false;
     public static float RealEarthRad = 6378.135F; // 3 переменный для соотношения габаритов сцены и реальных
-    public static float GameEarthRad = 6378.135F/80; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат
+    public static float GameEarthRad = 10.83F; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат; 155.9248; 21.67
     public static float GameToRealEarthCor = 1F; // и северный полюс расположен вдоль мировой оси y
     public static DateTime MultiplierStart = DateTime.UtcNow;
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
@@ -77,9 +77,12 @@ public class game_state : MonoBehaviour
             prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
             prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
             if (ImageTarget)
-                Instantiate(prefab, ImageTarget.transform);
+            {
+                GameObject newObject = Instantiate(prefab, ImageTarget.transform);
+                newObject.transform.localScale = new Vector3(100, 100, 100);
+            }
             else//для теста без AR
-            { 
+            {
                 GameObject newObject = Instantiate(prefab);
                 newObject.transform.localScale = new Vector3(100, 100, 100);
             }
