@@ -10,6 +10,7 @@ public class GeoPoint : MonoBehaviour
     public double longit;
     public float height;
     public Transform target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,8 @@ public class GeoPoint : MonoBehaviour
         float size = dist / 100;
         //if(size < 0.07608918)
             transform.localScale = new Vector3(size,size,size);
-        if (Physics.Raycast(transform.position, Camera.main.transform.position) || (!game_state.IsTracking))
+        Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
+        if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
         {
             transform.GetComponent<Show_name>().enabled = false;
             transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = false;

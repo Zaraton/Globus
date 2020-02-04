@@ -58,12 +58,11 @@ public class Orbital_movement : MonoBehaviour
             Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
             Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
             transform.rotation = rotation;
-            
-            if (Physics.Raycast(transform.position, Camera.main.transform.position) || (!game_state.IsTracking))
+
+            if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
                 foreach (var component in rendererComponents)
-
                     component.enabled = false;
                 transform.GetComponent<Show_name>().enabled = false;
             }

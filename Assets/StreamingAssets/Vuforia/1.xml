@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="coat_arms_russia_PNG31" size="1.000000 1.095187" />
+    <ImageTarget name="qr" size="1.000000 1.000000" />
     <ImageTarget name="QR2_3" size="1.000000 1.000000" />
     <ImageTarget name="QR2_2" size="1.000000 1.000000" />
     <ImageTarget name="QR5" size="1.000000 1.000000" />
@@ -8,18 +10,19 @@
     <ImageTarget name="QR4" size="1.000000 1.000000" />
     <ImageTarget name="QR3" size="1.000000 1.000000" />
     <ImageTarget name="QR1" size="1.000000 1.000000" />
-    <ImageTarget name="qr" size="1.000000 0.994652" />
     <ImageTarget name="ObjectScanningTarget" size="1.000000 0.707204" />
+  
     <MultiTarget name="Globe">
       
         <Part name="QR1" translation="10.84 0 0" rotation="AD: 0 1 0 90"/>
         <Part name="QR4" translation="0 0 10.84" rotation="AD: 0 1 0 0"/>
       
-      <Part name="QR3" translation="0 -10.84 0" rotation="AD: 1 0 0 90"/>
+       <Part name="QR3" translation="0 -10.84 0" rotation="AD: 1 0 0 90"/>
       
         <Part name="QR5" translation="0 0 -10.84" rotation="AD: 0 1 0 180"/>
         <Part name="QR2_3" translation="-10.84 0 0" rotation="AD: 0 1 0 -90"/>
     </MultiTarget>
+
 
   </Tracking>
 </QCARConfig>
