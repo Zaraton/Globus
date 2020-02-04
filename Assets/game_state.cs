@@ -112,6 +112,7 @@ public class game_state : MonoBehaviour
         TextAsset file = Resources.Load(filename) as TextAsset; 
         return file.ToString();
     }
+
     public void ChangeMultiplier(float speed)
     {
         if (TimeMultiplier == 0f)
