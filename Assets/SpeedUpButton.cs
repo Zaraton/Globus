@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpeedUpButton : MonoBehaviour
 {
-    public GameObject ClockHand;
+    public Image ClockHand;
     public Toggle ToggleScript;
 
     public Image Image;
@@ -27,7 +27,7 @@ public class SpeedUpButton : MonoBehaviour
     void Update()
     {
         if (ClockHand != null)
-            ClockHand.transform.Rotate(-Vector3.forward * Time.deltaTime * angle * currentSpeed); // поворачиваем стрелку
+            ClockHand.rectTransform.Rotate(-Vector3.forward * Time.deltaTime * angle * currentSpeed); // поворачиваем стрелку
 
         if (ToggleScript.isOn ^ is100) // если эти переменные разные, состояние изменилось -> запускаем ToggleClock()
             ToggleClock();

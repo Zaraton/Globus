@@ -8,6 +8,9 @@ public class UI_Info_handler : MonoBehaviour
     public GameObject Wrapper;
     public Text Info_Name;
     public Text Info_Text;
+
+    public Image Info_Image;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,8 @@ public class UI_Info_handler : MonoBehaviour
         // Parse text data
         Info_Name.text = Info_Object.Name;
         Info_Text.text = Info_Object.Info;
+        //TODO: place info sprites here
+        //Info_Image.sprite = Info_Object.Sprite;
     }
 
     public void Close_Object_Info()
