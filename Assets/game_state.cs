@@ -15,7 +15,7 @@ public class game_state : MonoBehaviour
     public static float TimeMultiplier = 0f;
     public static bool IsTracking = true;
     public static float RealEarthRad = 6378.135F; // 3 переменный для соотношения габаритов сцены и реальных
-    public static float GameEarthRad = 10.83F; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат; 155.9248; 21.67
+    public static float GameEarthRad = 0.5F; // для корректной работы земной шар должен находиться ровно в 0,0,0 координат; 155.9248; 21.67
     public static float GameToRealEarthCor = 1F; // и северный полюс расположен вдоль мировой оси y
     public static DateTime MultiplierStart = DateTime.UtcNow;
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
