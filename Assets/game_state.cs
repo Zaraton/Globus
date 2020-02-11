@@ -20,23 +20,10 @@ public class game_state : MonoBehaviour
     public static DateTime MultiplierStart = DateTime.UtcNow;
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
     public Text SimulationTime;
+    public static GameObject LastTarget=null;
 
-
-    private void Start()
+    private void InstantiateObjects()
     {
-        GameToRealEarthCor = GameEarthRad / RealEarthRad;
-        //Get screen size to place choosed object near camera
-        Debug.Log((float)Math.Tan(Camera.main.fieldOfView / 2));
-        Debug.Log((Camera.main.fieldOfView));
-        Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - ((distanceToCam * (float)Math.Tan(Camera.main.fieldOfView / 2 * Math.PI / 180))), 0, Camera.main.transform.position.z + distanceToCam);
-
-        //Change canvas aspect ratio to screen's
-        RectTransform info_text = GameObject.Find("UI_Canvas").GetComponent<RectTransform>();
-        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
-        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
-
-        //Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - distanceToCam * (float)Math.Tan(Camera.main.fieldOfView/2 * (float)Math.PI / 180), 0, Camera.main.transform.position.z + distanceToCam);
-        //Instantiate objects
         GameObject earth = GameObject.Find("Earth");
         ImageTarget = GameObject.Find("ImageTarget");
 
@@ -56,14 +43,14 @@ public class game_state : MonoBehaviour
                 if (ImageTarget)
                     Instantiate(prefab, ImageTarget.transform);
                 else //для теста без AR
-                { 
+                {
                     GameObject newObject = Instantiate(prefab);
-                   // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 }
             }
         }
-        
-        
+
+
         //Instantiate spaceports
         SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadSpacePortsFromFile("SpacePorts"));
         Debug.Log("json: " + ReadSpacePortsFromFile("SpacePorts"));
@@ -87,6 +74,23 @@ public class game_state : MonoBehaviour
                 newObject.transform.localScale = new Vector3(100, 100, 100);
             }
         }
+    }
+    private void Start()
+    {
+        GameToRealEarthCor = GameEarthRad / RealEarthRad;
+        //Get screen size to place choosed object near camera
+        Debug.Log((float)Math.Tan(Camera.main.fieldOfView / 2));
+        Debug.Log((Camera.main.fieldOfView));
+        Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - ((distanceToCam * (float)Math.Tan(Camera.main.fieldOfView / 2 * Math.PI / 180))), 0, Camera.main.transform.position.z + distanceToCam);
+
+        //Change canvas aspect ratio to screen's
+        RectTransform info_text = GameObject.Find("UI_Canvas").GetComponent<RectTransform>();
+        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.width);
+        info_text.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height);
+
+        //Camera.main.transform.GetChild(0).transform.position = new Vector3(Camera.main.transform.position.x - distanceToCam * (float)Math.Tan(Camera.main.fieldOfView/2 * (float)Math.PI / 180), 0, Camera.main.transform.position.z + distanceToCam);
+        //Instantiate objects
+        InstantiateObjects(); 
     }
     private void Update()
     {

@@ -103,6 +103,16 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
             foreach (var component in canvasComponents)
                 component.enabled = true;
             game_state.IsTracking=true;
+
+            if ((game_state.LastTarget)&(game_state.LastTarget!= game_state.LastTarget.gameObject))
+            {
+                foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
+                    SatsAndSpaceports.SetParent(transform);
+                foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
+                    Destroy(SatsAndSpaceports.gameObject);
+
+            }
+            game_state.LastTarget = transform.gameObject;
         }
     }
 
