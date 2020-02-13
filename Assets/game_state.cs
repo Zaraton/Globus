@@ -21,7 +21,7 @@ public class game_state : MonoBehaviour
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
     public Text SimulationTime;
     public static GameObject LastTarget=null;
-
+    public static void NewTarget(GameObject Target) { LastTarget = Target; }
     private void InstantiateObjects()
     {
         GameObject earth = GameObject.Find("Earth");

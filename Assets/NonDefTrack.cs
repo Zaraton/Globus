@@ -81,7 +81,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
 
     #endregion // PUBLIC_METHODS
 
-    #region PROTECTED_METHODS
+     #region PROTECTED_METHODS
 
     protected virtual void OnTrackingFound()
     {
@@ -112,7 +112,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
                     Destroy(SatsAndSpaceports.gameObject);
 
             }
-            game_state.LastTarget = transform.gameObject;
+            game_state.NewTarget(transform.gameObject);
         }
     }
 

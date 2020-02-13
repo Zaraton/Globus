@@ -32,19 +32,23 @@ public class GeoPoint : MonoBehaviour
         
         //Resize with distance to camera
         float dist = Vector3.Distance(Camera.main.transform.position, transform.position);
-        float size = dist / 100;
-        //if(size < 0.07608918)
+        float size = dist / 75;
+        if (size < 0.02)
+            size = 0.02F;
             transform.localScale = new Vector3(size,size,size);
         Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
         if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
         {
             transform.GetComponent<Show_name>().enabled = false;
             transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = false;
+            transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
            transform.GetComponent<Show_name>().enabled = true;
            transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
+           transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = true;
+
         }
     }
 }
