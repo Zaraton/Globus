@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8ffcb06e905494aae4407f5c3fc5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textSize: 14
+  textSize: 20
   textFont: {fileID: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   textHeight: 250

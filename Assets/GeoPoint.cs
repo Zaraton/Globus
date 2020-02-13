@@ -33,8 +33,8 @@ public class GeoPoint : MonoBehaviour
         //Resize with distance to camera
         float dist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float size = dist / 75;
-        if (size < 0.02)
-            size = 0.02F;
+        if (size < 0.05)
+            size = 0.05F;
             transform.localScale = new Vector3(size,size,size);
         Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
         if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
