@@ -109,7 +109,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
                 foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
                     SatsAndSpaceports.SetParent(transform);
                 foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
-                    Destroy(SatsAndSpaceports.gameObject);
+                    Destroy(SatsAndSpaceports.gameObject);//?????????????????????????????????????????
 
             }
             game_state.NewTarget(transform.gameObject);
@@ -127,7 +127,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
 
             // Disable rendering:
             foreach (var component in rendererComponents)
-            { component.enabled = false; Debug.Log("Visible? = " + component.isVisible); }
+            { component.enabled = false; /*Debug.Log("Visible? = " + component.isVisible);*/ }
 
             // Disable colliders:
             foreach (var component in colliderComponents)

@@ -10,6 +10,7 @@ public class GeoPoint : MonoBehaviour
     public double longit;
     public float height;
     public Transform target;
+    public float LastDist=0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +30,13 @@ public class GeoPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //Resize with distance to camera
-        float dist = Vector3.Distance(Camera.main.transform.position, transform.position);
-        float size = dist / 75;
-        if (size < 0.05)
-            size = 0.05F;
-            transform.localScale = new Vector3(size,size,size);
+        if (LastDist==0)
+            LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
+        float NewDist = Vector3.Distance(Camera.main.transform.position, transform.position);
+        float SizeMiltiplier=NewDist/LastDist;
+        transform.localScale = new Vector3(transform.localScale.x*SizeMiltiplier, transform.localScale.y*SizeMiltiplier, transform.localScale.z*SizeMiltiplier);
         Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
         if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
         {
@@ -50,5 +51,6 @@ public class GeoPoint : MonoBehaviour
            transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = true;
 
         }
+        LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
     }
 }
