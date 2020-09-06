@@ -21,7 +21,9 @@ public class game_state : MonoBehaviour
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
     public Text SimulationTime;
     public static GameObject LastTarget=null;
+
     public static void NewTarget(GameObject Target) { LastTarget = Target; }
+
     private void InstantiateObjects()
     {
         //Shit for Debug
@@ -48,13 +50,14 @@ public class game_state : MonoBehaviour
 
 
         //Instantiate satellites
-        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("data_with_nulls2"));
+        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("Satellites"));
         //Debug.Log("json: " + ReadFromFile("Satellites"));
         foreach (Satellite Sp in SList.SList)
         {
-            
-           // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
-           // {
+
+            // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
+            if (Sp.TLE1!="null")
+            {
                 Debug.Log("Spawning: " + Sp.Name);
                 prefab = Resources.Load(Sp.Model_3D) as GameObject;
                 prefab.gameObject.name = Sp.Name;
@@ -73,13 +76,13 @@ public class game_state : MonoBehaviour
                     Instantiate(prefab);
                     // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 }
-           // }
+            }
         }
 
 
         //Instantiate spaceports
         SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadFromFile("SpacePorts"));
-        Debug.Log("json: " + ReadFromFile("SpacePorts"));
+        //Debug.Log("json: " + ReadFromFile("SpacePorts"));
         foreach (Spaceport Sp in SpList.SpList)
         {
             Debug.Log("Spawning: " + Sp.Name);

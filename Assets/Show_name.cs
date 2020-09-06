@@ -39,7 +39,7 @@ public class Show_name : MonoBehaviour
     {
     }
     void OnGUI() //НАЗВАНИЕ спутника на экране
-    {
+    {/*
         if ((transform.gameObject == game_state.ChoosedObject) || (!game_state.ChoosedObject))
         {
             GUIStyle style = new GUIStyle();
@@ -62,7 +62,7 @@ public class Show_name : MonoBehaviour
 
             if (showShadow) GUI.Label(new Rect(screenPosition.x + shadowOffset.x, screenPosition.y + shadowOffset.y, 0, 0), textShadow, shadow);
             GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), text, style);
-        }
+        }*/
     }
 
     void OnBecameVisible()
@@ -74,7 +74,7 @@ public class Show_name : MonoBehaviour
     {
         enabled = false;
     }
-    void OnMouseDown()
+    void OnMouseDown()//ПЕРЕДЕЛАТЬ ПОД НОВУЮ СТРУКТУРУ ДЛЯ ВЫВОДА
     {
         if (!game_state.ChoosedObject)
         {

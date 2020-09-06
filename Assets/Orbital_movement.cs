@@ -20,13 +20,50 @@ public class Orbital_movement : MonoBehaviour
     private float m = 0.9F;
     Vector3 mPosDelta = Vector3.zero;
     Vector3 mPrevPos = Vector3.zero;
+
+    void SetOrbitalPosition(EpochTime InputTime)
+    {
+        Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, InputTime, Sgp4.wgsConstant.WGS_84);
+        //Calculate Latitude, longitude and height for satellite on Earth
+        Coordinate coordinate = SatFunctions.calcSatSubPoint(InputTime, satPos, Sgp4.wgsConstant.WGS_84);
+        Point3d Spheric = SatFunctions.calcSphericalCoordinate(coordinate, InputTime, satPos);
+        //Transform polar coordinates into decart
+        double latit = (coordinate.getLatetude());
+        double longit = (coordinate.getLongitude());
+        height = (coordinate.getHeight());
+        if (height > 15000) //If object too far from Earth - make it closer
+            height = height / 2;
+        float x = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
+        float z = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
+        float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
+        newPos = new Vector3(x, y, z);
+        transform.position = Vector3.Lerp(newPos, oldPos.position, m);
+
+        //Make object look at Earth
+        if (target == null) // If no target - make Earth a target
+            target = GameObject.Find("Earth").transform;
+        Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
+        Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
+        transform.rotation = rotation;
+    }
+    void SetModelPreviewPosition()
+    {
+        if (transform.parent != Camera.main.transform.GetChild(0))
+        {
+            transform.SetParent(Camera.main.transform.GetChild(0));
+
+        }
+        newPos = transform.parent.position;
+        transform.position = Vector3.Lerp(newPos, oldPos.position, m);
+    }
     // Start is called before the first frame update    
     void Start()
     {
         Sat_Name = gameObject.name.Replace("(Clone)", string.Empty);
         tle = ParserTLE.parseTle(
             tle1,tle2,Sat_Name);
-
+       // oldPos = transform;
+       // SetOrbitalPosition(game_state.nowtime);
         /*
         oldPos = transform;
         Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, game_state.nowtime, Sgp4.wgsConstant.WGS_84);
@@ -52,6 +89,10 @@ public class Orbital_movement : MonoBehaviour
         oldPos = transform;
         if (transform.gameObject != game_state.ChoosedObject)
         {
+
+            SetOrbitalPosition(game_state.nowtime);
+
+            /*
             //Parse three line element
             
             Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, game_state.nowtime, Sgp4.wgsConstant.WGS_84);
@@ -75,8 +116,8 @@ public class Orbital_movement : MonoBehaviour
                 target = GameObject.Find("Earth").transform;
             Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
             Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
-            transform.rotation = rotation;
-
+            transform.rotation = rotation;*/
+            /*
             if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
@@ -90,17 +131,11 @@ public class Orbital_movement : MonoBehaviour
                 foreach (var component in rendererComponents)
                     component.enabled = true;
                 transform.GetComponent<Show_name>().enabled = true;
-            }
+            }*/
         }
         else //Get model close to camera
         {
-            if (transform.parent != Camera.main.transform.GetChild(0))
-            {
-                transform.SetParent(Camera.main.transform.GetChild(0));
-                
-            }
-            newPos = transform.parent.position;
-            transform.position = Vector3.Lerp(newPos, oldPos.position, m);
+            SetModelPreviewPosition();
            // transform.rotation.eulerAngles.Set(0,0,0);
             if (Input.GetMouseButton(0))
             {

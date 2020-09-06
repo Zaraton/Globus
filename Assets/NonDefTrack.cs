@@ -104,7 +104,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
                 component.enabled = true;
             game_state.IsTracking=true;
 
-            if ((game_state.LastTarget)&(game_state.LastTarget!= game_state.LastTarget.gameObject))
+            if ((game_state.LastTarget)&&(game_state.LastTarget!= game_state.LastTarget.gameObject))
             {
                 foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
                     SatsAndSpaceports.SetParent(transform);
