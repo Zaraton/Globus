@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tle1: 1 35865U 09049A   19271.04830571  .00000016  00000-0  25990-4 0  9993
-  tle2: 2 35865  98.4186 264.6244 0001402 215.9225 144.1859 14.22208579520476
-  Sat_Name: ISS 1
+  tle1: 1 40069U 14037A   19271.06744460 -.00000031  00000-0  51912-5 0  9993
+  tle2: 2 40069  98.5416 313.0536 0005326 336.2328  23.8611 14.20664853270816
+  Sat_Name: METEOR-M2
   target: {fileID: 0}
   height: 0
 --- !u!114 &3901860523452635907
@@ -72,7 +72,7 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: ISS 1
+  Information: METEOR-M2
 --- !u!23 &3901860523452635906
 MeshRenderer:
   m_ObjectHideFlags: 0

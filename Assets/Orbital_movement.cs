@@ -137,11 +137,11 @@ public class Orbital_movement : MonoBehaviour
         {
             SetModelPreviewPosition();
            // transform.rotation.eulerAngles.Set(0,0,0);
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0)) // TODO: Исправить баг, при выборе обекта нажатием объект прилетает из-за экрана
             {
                 mPosDelta = Input.mousePosition - mPrevPos;
-                transform.Rotate(transform.up, Vector3.Dot(mPosDelta,Camera.main.transform.right), Space.World);
-                transform.Rotate(Camera.main.transform.right, Vector3.Dot(mPosDelta,Camera.main.transform.up), Space.World);
+                transform.parent.Rotate(Camera.main.transform.up, Vector3.Dot(mPosDelta,Camera.main.transform.right), Space.World);
+                transform.parent.Rotate(Camera.main.transform.right, Vector3.Dot(mPosDelta,Camera.main.transform.up), Space.World);
             }
             mPrevPos = Input.mousePosition;
         }
