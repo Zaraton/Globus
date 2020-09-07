@@ -16,7 +16,7 @@ public class UI_Info_handler : MonoBehaviour
     void Start()
     {
         Wrapper.SetActive(false);
-        //Search.SetActive(false);
+        Search.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,6 +41,19 @@ public class UI_Info_handler : MonoBehaviour
             game_state.ChoosedObject.transform.parent = null;
         game_state.ChoosedObject = null;
         
+    }
+    public void Seatch_Button_Behaviour()
+    {
+        if (Search.activeSelf != true) 
+        {
+            Start_Search();
+        }
+        else { Close_Search(); }
+
+    }
+    public void Start_Search()//ПЕРЕДЕЛАТЬ ПОД НОВУЮ СТРУКТУРУ ДЛЯ ВЫВОДА, НЕ ЗАБЫТЬ ИСПРАВИТЬ В Show_Name
+    {
+        Search.SetActive(true);
     }
     public void Close_Search()
     {
