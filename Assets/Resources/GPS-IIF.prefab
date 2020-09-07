@@ -126,9 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tle1: 1 28474U 04045A   19297.86530404 -.00000038 +00000-0 +00000-0 0  9998
-  tle2: 2 28474 054.8109 062.4942 0195265 262.2810 053.8721 02.00576668109747
-  Sat_Name: NAVSTAR 56 (USA 180)
+  tle1: 1 35752U 09043A   20250.35127235 -.00000011  00000-0  00000-0 0  9998
+  tle2: 2 35752  54.6339 111.7585 0059237  47.8521 124.9210  2.00557198 81022
+  Sat_Name: Navstar GPS IIR-M-8 (Navstar SVN 50, PRN 05, USA 206)
   target: {fileID: 0}
   height: 0
 --- !u!205 &8467320013196148676
@@ -177,7 +177,7 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: NAVSTAR 56 (USA 180)
+  Information: null
 --- !u!23 &8467320013196148678
 MeshRenderer:
   m_ObjectHideFlags: 0

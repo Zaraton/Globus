@@ -50,7 +50,7 @@ public class game_state : MonoBehaviour
 
 
         //Instantiate satellites
-        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("Satellites"));
+        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
         //Debug.Log("json: " + ReadFromFile("Satellites"));
         foreach (Satellite Sp in SList.SList)
         {

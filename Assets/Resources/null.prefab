@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tle1: 1 40069U 14037A   19271.06744460 -.00000031  00000-0  51912-5 0  9993
-  tle2: 2 40069  98.5416 313.0536 0005326 336.2328  23.8611 14.20664853270816
-  Sat_Name: METEOR-M2
+  tle1: 1 41556U 16033A   20251.60571522  .00000626  00000-0  30955-4 0  9992
+  tle2: 2 41556  97.3591 324.8846 0005281  92.3291  44.2108 15.21379217237407
+  Sat_Name: Ziyuan 3-2
   target: {fileID: 0}
   height: 0
 --- !u!114 &3901860523452635907
@@ -72,7 +72,7 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: METEOR-M2
+  Information: null
 --- !u!23 &3901860523452635906
 MeshRenderer:
   m_ObjectHideFlags: 0
