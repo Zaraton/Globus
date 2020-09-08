@@ -36,8 +36,15 @@ public class GeoPoint : MonoBehaviour
             LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float NewDist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float SizeMiltiplier=NewDist/LastDist;
-        transform.localScale = new Vector3(transform.localScale.x*SizeMiltiplier, transform.localScale.y*SizeMiltiplier, transform.localScale.z*SizeMiltiplier);
-        Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
+        if (transform.localScale.x * SizeMiltiplier<0.07f && transform.localScale.x * SizeMiltiplier > 0.015f)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * SizeMiltiplier, transform.localScale.y * SizeMiltiplier, transform.localScale.z * SizeMiltiplier);
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+        }
+        /*Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
         if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
         {
             transform.GetComponent<Show_name>().enabled = false;
@@ -50,7 +57,7 @@ public class GeoPoint : MonoBehaviour
            transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
            transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = true;
 
-        }
+        }*/
         LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
     }
 }

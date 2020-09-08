@@ -100,7 +100,7 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: SIRIUSSAT-2 (SXC1-182)
+  Information: null
 --- !u!114 &3574214806668596885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tle1: 1 43596U 98067PH  19297.87054907  .00021399  00000-0  22784-3 0  9995
-  tle2: 2 43596  51.6366  57.5993 0003498 241.4371 118.6272 15.63934802 67876
-  Sat_Name: SIRIUSSAT-2 (SXC1-182)
+  tle1: 1 43596U 98067PH  20252.21520726  .00044844  00000-0  23470-3 0  9996
+  tle2: 2 43596  51.6257 225.0284 0003919  63.0340 297.1062 15.80342949118075
+  Sat_Name: SiriusSat-2
   target: {fileID: 0}
   height: 0
 --- !u!23 &3815311337521080801

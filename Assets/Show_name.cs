@@ -80,7 +80,7 @@ public class Show_name : MonoBehaviour
         {
             Debug.Log("My name is jfef oh soryy " + text);
             Spaceport info_struct = new Spaceport(text, "", "", 0, 0, Information); // TODO: Поменять это просто на "взять поле у объекта" Артемий: учти что у спутника другая структура и больше параметров
-            Info_Handler.Show_Object_Info(info_struct, this.gameObject);
+            Info_Handler.Show_Object_Info(this.gameObject);
             // this object was clicked - do something
             /*Text info_text = GameObject.Find("Text_Canvas").GetComponent<Text>();
             info_text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");

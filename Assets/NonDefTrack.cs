@@ -125,6 +125,7 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
 
+
             // Disable rendering:
             foreach (var component in rendererComponents)
             { component.enabled = false; /*Debug.Log("Visible? = " + component.isVisible);*/ }
@@ -136,7 +137,20 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
             // Disable canvas':
             foreach (var component in canvasComponents)
                 component.enabled = false;
+
+            /*int children = this.transform.childCount;
+            for (int i = 0; i < children; ++i)
+            {
+                
+                Transform child = this.transform.GetChild(i);
+                var Sats_and_Ports_MeshRenderer = child.GetComponentsInChildren<MeshRenderer>(true);
+                foreach (var component in Sats_and_Ports_MeshRenderer)
+                    component.enabled = false;
+
+            }*/
+
             game_state.IsTracking = false;
+
         }
     }
 
