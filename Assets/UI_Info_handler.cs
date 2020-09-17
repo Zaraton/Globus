@@ -9,8 +9,10 @@ public class UI_Info_handler : MonoBehaviour
     public GameObject Search;
     public Text Info_Name;
     public Text Info_Text;
+    public Image Info_Image; //добавить подгрузку
+    public GameObject Show_On_Scene_Toggle;
+    public GameObject Show_Name_Toggle;
 
-    public Image Info_Image;
 
     public GameObject Search_Result_Content;
 
@@ -32,6 +34,22 @@ public class UI_Info_handler : MonoBehaviour
         // Parse text data
         Info_Name.text = Selected_Object.name.Replace("(Clone)","");//Info_Object.Name;
         Info_Text.text = Selected_Object.GetComponent<Show_name>().Information;//Info_Object.Info;
+        if (Selected_Object.GetComponent<Show_name>().Is_On_Scene == false)
+        {
+            Show_On_Scene_Toggle.GetComponent<Toggle>().isOn = false;
+        }
+        else
+        {
+            Show_On_Scene_Toggle.GetComponent<Toggle>().isOn = true;
+        }
+        if (Selected_Object.GetComponent<Show_name>().Is_Showing_Name == false)
+        {
+            Show_Name_Toggle.GetComponent<Toggle>().isOn = false;
+        }
+        else
+        {
+            Show_Name_Toggle.GetComponent<Toggle>().isOn = true;
+        }
         //TODO: place info sprites here
         //Info_Image.sprite = Info_Object.Sprite;
     }
@@ -43,8 +61,74 @@ public class UI_Info_handler : MonoBehaviour
             game_state.ChoosedObject.transform.SetParent(game_state.ImageTarget.transform);
         else //для теста без AR
             game_state.ChoosedObject.transform.parent = null;
+        //если обект не добавили на сцену - удалить его
+        if (!game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene)
+        {
+            Destroy(game_state.ChoosedObject);
+        }
+        else
         game_state.ChoosedObject = null;
-        
+    }
+
+    public void Show_On_Scene_Toggle_Behaviour()
+    {
+        if(Show_On_Scene_Toggle.GetComponent<Toggle>().isOn != game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene)
+        {
+            game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene = !game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene;
+            if (game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene)
+            {
+                Show_On_Scene_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Удалить со сцены";
+            }
+            else
+            {
+                Show_On_Scene_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Добавить на сцену";
+            }
+        }
+        else
+        {
+            if (game_state.ChoosedObject.GetComponent<Show_name>().Is_On_Scene)
+            {
+                Show_On_Scene_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Удалить со сцены";
+            }
+            else
+            {
+                Show_On_Scene_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Добавить на сцену";
+            }
+        }
+    }
+    public void Show_Name_Toggle_Behaviour()
+    {
+        if (Show_Name_Toggle.GetComponent<Toggle>().isOn != game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name)
+        {
+            game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name = !game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name;
+            if (game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name)
+            {
+                Show_Name_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Не показывать название";
+            }
+            else
+            {
+                Show_Name_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Показывать название";
+            }
+        }
+        else
+        {
+            if (game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name)
+            {
+                Show_Name_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Не показывать название";
+            }
+            else
+            {
+                Show_Name_Toggle.transform.GetChild(1).GetComponent<Text>().text = "Показывать название";
+            }
+        }
+    }
+    public void Start_Showing_Object_Name()
+    {
+        game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name = true;
+    }
+    public void Stop_Showing_Object_Name()
+    {
+        game_state.ChoosedObject.GetComponent<Show_name>().Is_Showing_Name = false;
     }
     public void Search_Button_Behaviour()
     {
@@ -55,7 +139,7 @@ public class UI_Info_handler : MonoBehaviour
         else { Close_Search(); }
 
     }
-    private void Start_Search()//ПЕРЕДЕЛАТЬ ПОД НОВУЮ СТРУКТУРУ ДЛЯ ВЫВОДА, НЕ ЗАБЫТЬ ИСПРАВИТЬ В Show_Name
+    private void Start_Search()
     {
         Search.SetActive(true);
     }

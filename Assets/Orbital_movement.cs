@@ -91,32 +91,6 @@ public class Orbital_movement : MonoBehaviour
         {
 
             SetOrbitalPosition(game_state.nowtime);
-
-            /*
-            //Parse three line element
-            
-            Sgp4Data satPos = SatFunctions.getSatPositionAtTime(tle, game_state.nowtime, Sgp4.wgsConstant.WGS_84);
-            //Calculate Latitude, longitude and height for satellite on Earth
-            Coordinate coordinate = SatFunctions.calcSatSubPoint(game_state.nowtime, satPos, Sgp4.wgsConstant.WGS_84);
-            Point3d Spheric = SatFunctions.calcSphericalCoordinate(coordinate, game_state.nowtime, satPos);
-            //Transform polar coordinates into decart
-            double latit = (coordinate.getLatetude());
-            double longit = (coordinate.getLongitude());
-            height = (coordinate.getHeight());
-            if (height > 15000) //If object too far from Earth - make it closer
-                height = height / 2;
-            float x = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
-            float z = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
-            float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
-            newPos = new Vector3(x, y, z);
-            transform.position = Vector3.Lerp(newPos, oldPos.position, m);
-            
-            //Make object look at Earth
-            if (target == null) // If no target - make Earth a target
-                target = GameObject.Find("Earth").transform;
-            Vector3 direction = target.position - transform.position; //Remove position info and left only rotation
-            Quaternion rotation = Quaternion.LookRotation(direction); //Rotation of object toward Earth
-            transform.rotation = rotation;*/
             /*
             if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
             {

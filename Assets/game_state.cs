@@ -21,100 +21,77 @@ public class game_state : MonoBehaviour
     public static EpochTime nowtime = new EpochTime(DateTime.UtcNow);
     public Text SimulationTime;
     public static GameObject LastTarget=null;
+    public static GameObject earth = null;
 
     public static void NewTarget(GameObject Target) { LastTarget = Target; }
-
-    public void Instantiate_All_Objects()
+    public void Instantiate_Spaceport(Spaceport Sp)
     {
-        //Shit for Debug
-        ImageTarget = GameObject.Find("ImageTarget");
-
-        
-        //Instantiete The Earth
-
-        GameObject prefab = Resources.Load("Earth") as GameObject;/*
+        Debug.Log("Spawning: " + Sp.Name);
+        GameObject prefab = Resources.Load("Космодром") as GameObject;
+        prefab.gameObject.name = Sp.Name;
+        prefab.transform.GetComponent<GeoPoint>().latit = Sp.Latitude;
+        prefab.transform.GetComponent<GeoPoint>().longit = Sp.Longitude;
+        prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
+        prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
+        prefab.transform.GetComponent<Show_name>().Is_On_Scene = true;
+        prefab.transform.GetComponent<Show_name>().Is_Showing_Name = false;
         if (ImageTarget)
         {
             GameObject newObject = Instantiate(prefab);
             newObject.transform.SetParent(ImageTarget.transform);
+            newObject.transform.localScale = new Vector3(100f, 100f, 100f);
+        }
+        else //для теста без AR (shit for debug)
+        {
+            Instantiate(prefab);
             // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
-        else //для теста без AR
-            Instantiate(prefab);
-            */
-
-
-        GameObject earth = GameObject.Find("Earth(Clone)");
-        
-        
-
-
-        //Instantiate satellites
-        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
-        //Debug.Log("json: " + ReadFromFile("Satellites"));
-        foreach (Satellite Sp in SList.SList)
-        {
-
-            // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
-            if (Sp.TLE1 != "null" && GameObject.Find(Sp.Name+"(Clone)") == null)
-            {
-                Debug.Log("Spawning: " + Sp.Name);
-                prefab = Resources.Load(Sp.Model_3D) as GameObject;
-                prefab.gameObject.name = Sp.Name;
-                prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.Name;
-                prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
-                prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
-                prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
-                prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
-                if (ImageTarget)
-                {
-                    GameObject newObject = Instantiate(prefab);
-                    newObject.transform.SetParent(ImageTarget.transform);
-                }
-                else //для теста без AR (shit for debug)
-                {
-                    Instantiate(prefab);
-                    // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                }
-            }
-        }
-
-        
-        /*
-        //Instantiate spaceports
-        SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadFromFile("SpacePorts"));
-        //Debug.Log("json: " + ReadFromFile("SpacePorts"));
-        foreach (Spaceport Sp in SpList.SpList)
+    }
+    public static GameObject Instantiate_Satellite(Satellite Sp)
+    {
+        // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
+        GameObject newObject = null;
+        if (Sp.TLE1 != "null" && GameObject.Find(Sp.Name + "(Clone)") == null)
         {
             Debug.Log("Spawning: " + Sp.Name);
-            prefab = Resources.Load("Космодром") as GameObject;
+            GameObject prefab = Resources.Load(Sp.Model_3D) as GameObject;
             prefab.gameObject.name = Sp.Name;
-            prefab.transform.GetComponent<GeoPoint>().latit = Sp.Latitude;
-            prefab.transform.GetComponent<GeoPoint>().longit = Sp.Longitude;
-            prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
+            prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.Name;
+            prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
+            prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
+            prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
             prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
+            prefab.transform.GetComponent<Show_name>().Is_On_Scene = false;
+            prefab.transform.GetComponent<Show_name>().Is_Showing_Name = false;
             if (ImageTarget)
             {
-                GameObject newObject = Instantiate(prefab);
+                newObject = Instantiate(prefab);
                 newObject.transform.SetParent(ImageTarget.transform);
-                newObject.transform.localScale = new Vector3(100f, 100f, 100f);
             }
             else //для теста без AR (shit for debug)
             {
                 Instantiate(prefab);
                 // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             }
-            
-        }*/
+        }
+        return newObject;
+    }
+    public void Instantiate_All_Objects()
+    {
+        //Instantiate satellites
+        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
+        //Debug.Log("json: " + ReadFromFile("Satellites"));
+        foreach (Satellite Sp in SList.SList)
+        {
+            Instantiate_Satellite(Sp);            
+        }
     }
     private void InstantiateObjects()
     {
         //Shit for Debug
         ImageTarget = GameObject.Find("ImageTarget");
-
-
+        
         //Instantiete The Earth
-
         GameObject prefab = Resources.Load("Earth") as GameObject;
         if (ImageTarget)
         {
@@ -124,79 +101,28 @@ public class game_state : MonoBehaviour
         }
         else //для теста без AR
             Instantiate(prefab);
-
-
-
-        GameObject earth = GameObject.Find("Earth(Clone)");
-
-
-
+               
+        earth = GameObject.Find("Earth(Clone)");
 
         //Instantiate satellites
         SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
         //Debug.Log("json: " + ReadFromFile("Satellites"));
         foreach (Satellite Sp in SList.SList)
         {
-
-            // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
-            if (Sp.TLE1 != "null" && Sp.Model_3D != "null")
+            if (Sp.Model_3D != "null")
             {
-                Debug.Log("Spawning: " + Sp.Name);
-                prefab = Resources.Load(Sp.Model_3D) as GameObject;
-                prefab.gameObject.name = Sp.Name;
-                prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.Name;
-                prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
-                prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
-                prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
-                prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
-                if (ImageTarget)
-                {
-                    GameObject newObject = Instantiate(prefab);
-                    newObject.transform.SetParent(ImageTarget.transform);
-                }
-                else //для теста без AR (shit for debug)
-                {
-                    Instantiate(prefab);
-                    // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                }
+                GameObject sat = Instantiate_Satellite(Sp);
+                if (sat)
+                    sat.transform.GetComponent<Show_name>().Is_On_Scene = true;
             }
         }
-
-
-
+               
         //Instantiate spaceports
         SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadFromFile("SpacePorts"));
         //Debug.Log("json: " + ReadFromFile("SpacePorts"));
         foreach (Spaceport Sp in SpList.SpList)
         {
-            Debug.Log("Spawning: " + Sp.Name);
-            prefab = Resources.Load("Космодром") as GameObject;
-            prefab.gameObject.name = Sp.Name;
-            prefab.transform.GetComponent<GeoPoint>().latit = Sp.Latitude;
-            prefab.transform.GetComponent<GeoPoint>().longit = Sp.Longitude;
-            prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
-            prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
-            if (ImageTarget)
-            {
-                GameObject newObject = Instantiate(prefab);
-                newObject.transform.SetParent(ImageTarget.transform);
-                newObject.transform.localScale = new Vector3(100f, 100f, 100f);
-            }
-            else //для теста без AR (shit for debug)
-            {
-                Instantiate(prefab);
-                // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            }
-            /* if (ImageTarget)
-            {
-                GameObject newObject = Instantiate(prefab, ImageTarget.transform);
-                newObject.transform.localScale = new Vector3(100, 100, 100);
-            }
-            else//для теста без AR (shit for debug)
-            {
-                GameObject newObject = Instantiate(prefab);
-                newObject.transform.localScale = new Vector3(100, 100, 100);
-            }*/
+            Instantiate_Spaceport(Sp);
         }
     }
     private void Start()

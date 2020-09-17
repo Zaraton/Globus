@@ -23,6 +23,9 @@ public class Show_name : MonoBehaviour
    // private MeshRenderer MeshRen;
     public string Information;
     Camera cam;
+    public bool Is_On_Scene;
+    public bool Is_Showing_Name = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +42,8 @@ public class Show_name : MonoBehaviour
     {
     }
     void OnGUI() //НАЗВАНИЕ спутника на экране
-    {/*
-        if ((transform.gameObject == game_state.ChoosedObject) || (!game_state.ChoosedObject))
+    {
+        if (Is_Showing_Name && (!game_state.ChoosedObject) && game_state.LastTarget!=null && Info_Handler)
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = textSize;
@@ -62,7 +65,7 @@ public class Show_name : MonoBehaviour
 
             if (showShadow) GUI.Label(new Rect(screenPosition.x + shadowOffset.x, screenPosition.y + shadowOffset.y, 0, 0), textShadow, shadow);
             GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), text, style);
-        }*/
+        }
     }
 
     void OnBecameVisible()
@@ -79,8 +82,13 @@ public class Show_name : MonoBehaviour
         if (!game_state.ChoosedObject)
         {
             Debug.Log("My name is jfef oh soryy " + text);
-            Spaceport info_struct = new Spaceport(text, "", "", 0, 0, Information); // TODO: Поменять это просто на "взять поле у объекта" Артемий: учти что у спутника другая структура и больше параметров
+            //Spaceport info_struct = new Spaceport(text, "", "", 0, 0, Information); // TODO: Поменять это просто на "взять поле у объекта" Артемий: учти что у спутника другая структура и больше параметров
             Info_Handler.Show_Object_Info(this.gameObject);
+            Animator anim = this.gameObject.GetComponent<Animator>();
+            if (anim)
+            {
+                anim.SetTrigger("ClickTrigger");
+            }
             // this object was clicked - do something
             /*Text info_text = GameObject.Find("Text_Canvas").GetComponent<Text>();
             info_text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
