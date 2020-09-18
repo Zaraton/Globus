@@ -22,6 +22,7 @@ public class game_state : MonoBehaviour
     public Text SimulationTime;
     public static GameObject LastTarget=null;
     public static GameObject earth = null;
+    public static bool All_Added=false;
 
     public static void NewTarget(GameObject Target) { LastTarget = Target; }
     public void Instantiate_Spaceport(Spaceport Sp)
@@ -51,7 +52,8 @@ public class game_state : MonoBehaviour
     {
         // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
         GameObject newObject = null;
-        if (Sp.TLE1 != "null" && GameObject.Find(Sp.Name + "(Clone)") == null)
+        GameObject check = GameObject.Find(Sp.Name + "(Clone)");
+        if (Sp.TLE1 != "null" && check == null)
         {
             Debug.Log("Spawning: " + Sp.Name);
             GameObject prefab = Resources.Load(Sp.Model_3D) as GameObject;
@@ -81,9 +83,22 @@ public class game_state : MonoBehaviour
         //Instantiate satellites
         SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
         //Debug.Log("json: " + ReadFromFile("Satellites"));
-        foreach (Satellite Sp in SList.SList)
+        if (!All_Added)
         {
-            Instantiate_Satellite(Sp);            
+            foreach (Satellite Sp in SList.SList)
+            {
+                Instantiate_Satellite(Sp);
+            }
+            All_Added = true;
+        }
+        else
+        {
+            foreach (Transform child in ImageTarget.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            All_Added = false;
+            InstantiateObjects();
         }
     }
     private void InstantiateObjects()
