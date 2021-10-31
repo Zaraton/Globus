@@ -177,7 +177,8 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: null
+  Information: 
+  Source1: http://tycho.usno.navy.mil/gpscurr.html
   Is_On_Scene: 0
   Is_Showing_Name: 0
 --- !u!23 &8467320013196148678

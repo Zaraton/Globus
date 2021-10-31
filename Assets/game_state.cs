@@ -5,6 +5,9 @@ using System;
 using One_Sgp4;
 using UnityEngine.UI;
 using Vuforia;
+using System.Globalization;
+using System.Text;
+using Newtonsoft.Json;
 
 public class game_state : MonoBehaviour
 {
@@ -23,13 +26,15 @@ public class game_state : MonoBehaviour
     public static GameObject LastTarget=null;
     public static GameObject earth = null;
     public static bool All_Added=false;
+    public static string json = "OUT_Active";//"OUT_Active";
+
 
     public static void NewTarget(GameObject Target) { LastTarget = Target; }
     public void Instantiate_Spaceport(Spaceport Sp)
     {
-        Debug.Log("Spawning: " + Sp.Name);
+        Debug.Log("Spawning: " + Sp.name);
         GameObject prefab = Resources.Load("Космодром") as GameObject;
-        prefab.gameObject.name = Sp.Name;
+        prefab.gameObject.name = Sp.name;
         prefab.transform.GetComponent<GeoPoint>().latit = Sp.Latitude;
         prefab.transform.GetComponent<GeoPoint>().longit = Sp.Longitude;
         prefab.transform.GetComponent<GeoPoint>().target = earth.transform;
@@ -48,21 +53,99 @@ public class game_state : MonoBehaviour
             // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
+    public static GameObject Instantiate_Satellite_Web_Scraped(Satellite Sp)
+    {
+        // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
+        GameObject newObject = null;
+        GameObject check = GameObject.Find(Sp.name + "(Clone)");
+        if (Sp.TLE1 != "null" && check == null)
+        {
+            Debug.Log("Spawning: " + Sp.name);
+            GameObject prefab = Resources.Load(Sp.Model_3D) as GameObject;
+            prefab.gameObject.name = Sp.name;
+            prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.name;
+            prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
+            prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
+            prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
+            prefab.transform.GetComponent<Show_name>().Information = "TLE1: " + Sp.TLE1 + "\n" + "TLE2: " + Sp.TLE2 + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Аргумент перицентра в градусах: " + Sp.argument_of_perigee + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Средняя аномалия: " + Sp.mean_anomaly + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Частота обращения (оборотов в день): " + Sp.mean_motion + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Номер витка на момент эпохи: " + Sp.revolution_number + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Эксцентриситет: " + Sp.eccentricity + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Наклонение в градусах: " + Sp.inclination_in_degrees + "\n";
+            Debug.Log("0." + Sp.date_of_launch);
+            if(float.Parse(("0." + Sp.date_of_launch), CultureInfo.InvariantCulture.NumberFormat)*100 < 22)
+                prefab.transform.GetComponent<Show_name>().Information += "Год запуска: 19" + Sp.date_of_launch + "\n";
+            else
+                prefab.transform.GetComponent<Show_name>().Information += "Год запуска: 20" + Sp.date_of_launch + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Номер запуска в году: " + Sp.launch_number_of_the_year + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Международное обозначение номера запуска в году: " + Sp.launch_piece + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Год эпохи: " + Sp.epoch_year + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "День эпохи:" + Sp.epoch_day + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Баллистический коэффициент: " + Sp.ballistic_coefficient + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Вторая производная от среднего движения, делённая на шесть: " + Sp.second_derivative_of_mean_motion + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Коэффициент торможения: " + Sp.drag_term + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Номер (версия) элемента: " + Sp.element_set_number + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Номер в каталоге COSPAR: " + Sp.COSPAR_number + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Номер в каталоге NORAD: " + Sp.NORAD_number + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Апогей: " + Sp.apogee_in_km + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Наклонение: " + Sp.inclination + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Период вращения в минутах: " + Sp.period + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Место запуска: " + Sp.launch_site + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Запущено на: " + Sp.launch_vehicle + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Зарегестрирован: " + Sp.country_or_org_of_UN_registry + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Страна владельца/оператора: " + Sp.country_of_operator_or_owner + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Оператор/владелец: " + Sp.operator_or_owner + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Пользователи: " + Sp.users + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Назначение: " + Sp.purpose + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Класс орбиты: " + Sp.class_of_orbit + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Тип орбиты: " + Sp.type_of_orbit + "\n";
+            if (Sp.class_of_orbit=="GEO")
+                prefab.transform.GetComponent<Show_name>().Information += "Широта геостационарной орбиты: " + Sp.longitude_of_GEO_in_degrees + "\n";
+            //prefab.transform.GetComponent<Show_name>().Information += "Период в минутах: " + Sp.period_in_minutes + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Масса при запуске в кг: " + Sp.launch_mass_in_kg + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Ожидаемая продолжительность жизни: " + Sp.expected_lifetime_in_years + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Заказчик: " + Sp.contractor + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Страна заказчика: " + Sp.country_of_contractor + "\n";
+            prefab.transform.GetComponent<Show_name>().Information += "Справочная информация: " + Sp.info + "\n";
+            //prefab.transform.GetComponent<Show_name>().Information += "Источники информации: " + Sp.links.Replace(' ', '\n') + "\n";
+
+
+            prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
+            //prefab.transform.GetComponent<Show_name>().Source1 = Sp.Source1;
+            prefab.transform.GetComponent<Show_name>().Is_On_Scene = false;
+            prefab.transform.GetComponent<Show_name>().Is_Showing_Name = false;
+            if (ImageTarget)
+            {
+                newObject = Instantiate(prefab);
+                newObject.transform.SetParent(ImageTarget.transform);
+            }
+            else //для теста без AR (shit for debug)
+            {
+                Instantiate(prefab);
+                // newObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            }
+        }
+        Debug.Log(newObject);
+        return newObject;
+    }
     public static GameObject Instantiate_Satellite(Satellite Sp)
     {
         // if (Sp.Model_3D== "GPS-IIF" || Sp.Model_3D == "null")
         GameObject newObject = null;
-        GameObject check = GameObject.Find(Sp.Name + "(Clone)");
+        GameObject check = GameObject.Find(Sp.name + "(Clone)");
         if (Sp.TLE1 != "null" && check == null)
         {
-            Debug.Log("Spawning: " + Sp.Name);
+            Debug.Log("Spawning: " + Sp.name);
             GameObject prefab = Resources.Load(Sp.Model_3D) as GameObject;
-            prefab.gameObject.name = Sp.Name;
-            prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.Name;
+            prefab.gameObject.name = Sp.name;
+            prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.name;
             prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
             prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
             prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
-            prefab.transform.GetComponent<Show_name>().Information = Sp.Info;
+            prefab.transform.GetComponent<Show_name>().Information = Sp.info;
+            //prefab.transform.GetComponent<Show_name>().Source1 = Sp.Source1;
             prefab.transform.GetComponent<Show_name>().Is_On_Scene = false;
             prefab.transform.GetComponent<Show_name>().Is_Showing_Name = false;
             if (ImageTarget)
@@ -81,13 +164,14 @@ public class game_state : MonoBehaviour
     public void Instantiate_All_Objects()
     {
         //Instantiate satellites
-        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
+        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile(json));
         //Debug.Log("json: " + ReadFromFile("Satellites"));
         if (!All_Added)
         {
             foreach (Satellite Sp in SList.SList)
             {
-                Instantiate_Satellite(Sp);
+                Instantiate_Satellite_Web_Scraped(Sp);
+                //Instantiate_Satellite(Sp);
             }
             All_Added = true;
         }
@@ -119,22 +203,31 @@ public class game_state : MonoBehaviour
                
         earth = GameObject.Find("Earth(Clone)");
 
-        //Instantiate satellites
-        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile("OUT_Active"));
-        //Debug.Log("json: " + ReadFromFile("Satellites"));
+        int SatsAmmount = 0;
+
+        SatelliteList SList = JsonUtility.FromJson<SatelliteList>(ReadFromFile( "OUT_Active"));
+        Debug.Log("json: " +SList);
         foreach (Satellite Sp in SList.SList)
         {
-            if (Sp.Model_3D != "null")
+            if ((SatsAmmount < 100))
             {
-                GameObject sat = Instantiate_Satellite(Sp);
+                //if (Sp.Model_3D != "null")
+                // {
+                //GameObject sat = Instantiate_Satellite_Web_Scraped(Sp);
+                GameObject sat = Instantiate_Satellite_Web_Scraped(Sp);
+
                 if (sat)
                     sat.transform.GetComponent<Show_name>().Is_On_Scene = true;
+                //  }
+                SatsAmmount++;
             }
-        }
-               
+            else
+                break;
+        }    
         //Instantiate spaceports
         SpaceportList SpList = JsonUtility.FromJson<SpaceportList>(ReadFromFile("SpacePorts"));
         //Debug.Log("json: " + ReadFromFile("SpacePorts"));
+        Debug.Log("json: " + SpList);
         foreach (Spaceport Sp in SpList.SpList)
         {
             Instantiate_Spaceport(Sp);
@@ -174,7 +267,7 @@ public class game_state : MonoBehaviour
         foreach (Satellite Sp in SList.SList)
         {
             int counter_for_removal = 0;
-            foreach(char b in Sp.Name)
+            foreach(char b in Sp.name)
             {
                 if (b != '(')
                     counter_for_removal = counter_for_removal + 1;
@@ -182,10 +275,10 @@ public class game_state : MonoBehaviour
                     break;
                
             }
-            if (counter_for_removal<Sp.Name.Length)
-                Sp.Official_Name=Sp.Name.Remove(counter_for_removal-1);
+            if (counter_for_removal<Sp.name.Length)
+                Sp.Official_name=Sp.name.Remove(counter_for_removal-1);
 
-            Debug.Log("Spawning: " + Sp.Name);
+            Debug.Log("Spawning: " + Sp.name);
             //Debug.Log("line: " + lines[1]);
             //Debug.Log("line_norad: " + lines[1].Substring(2, 5).Replace(" ", ""));
             
@@ -245,7 +338,8 @@ public class game_state : MonoBehaviour
 
     public static string ReadFromFile(string filename)
     {
-        TextAsset file = Resources.Load(filename) as TextAsset; 
+        TextAsset file = Resources.Load(filename) as TextAsset;
+        Debug.Log(filename);
         return file.ToString();
     }
 

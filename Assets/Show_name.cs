@@ -22,6 +22,7 @@ public class Show_name : MonoBehaviour
    // private Show_name showname;
    // private MeshRenderer MeshRen;
     public string Information;
+    public string Source1;
     Camera cam;
     public bool Is_On_Scene;
     public bool Is_Showing_Name = false;

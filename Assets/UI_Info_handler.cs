@@ -9,6 +9,7 @@ public class UI_Info_handler : MonoBehaviour
     public GameObject Search;
     public Text Info_Name;
     public Text Info_Text;
+    public Text Link_Text;
     public Image Info_Image; //добавить подгрузку
     public GameObject Show_On_Scene_Toggle;
     public GameObject Show_Name_Toggle;
@@ -34,6 +35,7 @@ public class UI_Info_handler : MonoBehaviour
         // Parse text data
         Info_Name.text = Selected_Object.name.Replace("(Clone)","");//Info_Object.Name;
         Info_Text.text = Selected_Object.GetComponent<Show_name>().Information;//Info_Object.Info;
+        Link_Text.text = Selected_Object.GetComponent<Show_name>().Source1;
         if (Selected_Object.GetComponent<Show_name>().Is_On_Scene == false)
         {
             Show_On_Scene_Toggle.GetComponent<Toggle>().isOn = false;
@@ -169,13 +171,15 @@ public class UI_Info_handler : MonoBehaviour
         {
             foreach (Satellite Sp in SList.SList)
             {
-                if (Sp.Name.ToLower().Contains(Input.text.ToLower())&&Sp.TLE1!="null")
+                Debug.Log("dicks1");
+                if (Sp.name.ToLower().Contains(Input.text.ToLower())&&Sp.TLE1!="null")
                 {
                     // game_state.
+                    Debug.Log("dicks2");
                     Add_Search_Result(Sp);
                     /*
                     Spaceport info_struct = new Spaceport("asdasd", "", "", 0, 0, "asdasdasd"); // TODO: Поменять это просто на "взять поле у объекта" Артемий: учти что у спутника другая структура и больше параметров
-                    this.Show_Object_Info(GameObject.Find(Sp.Name + "(Clone)"));
+                    this.Show_Object_Info(GameObject.Find(Sp.name + "(Clone)"));
                     break;
                     */
                 }
@@ -183,17 +187,21 @@ public class UI_Info_handler : MonoBehaviour
         }
 
     }
+    public void OpenUrl()
+    {
+        Application.OpenURL(game_state.ChoosedObject.GetComponent<Show_name>().Source1);
+    }
     private void Add_Search_Result(Satellite Sp)
     {
         
         GameObject prefab = Resources.Load("Search_Result") as GameObject;
-        prefab.transform.GetChild(0).GetComponent<Text>().text = Sp.Name;
+        prefab.transform.GetChild(0).GetComponent<Text>().text = Sp.name;
         GameObject newObject = Instantiate(prefab);
         newObject.transform.SetParent(Search_Result_Content.transform);
         newObject.transform.localScale = new Vector3(1f, 12.58164f, 1f);
-        Debug.Log(Sp.Name);
-        /*prefab.gameObject.name = Sp.Name;
-        prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.Name;
+        Debug.Log(Sp.name);
+        /*prefab.gameObject.name = Sp.name;
+        prefab.transform.GetComponent<Orbital_movement>().Sat_Name = Sp.name;
         prefab.transform.GetComponent<Orbital_movement>().tle1 = Sp.TLE1;
         prefab.transform.GetComponent<Orbital_movement>().tle2 = Sp.TLE2;
         prefab.transform.GetComponent<Orbital_movement>().target = earth.transform;
