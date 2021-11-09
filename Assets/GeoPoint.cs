@@ -36,28 +36,26 @@ public class GeoPoint : MonoBehaviour
             LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float NewDist = Vector3.Distance(Camera.main.transform.position, transform.position);
         float SizeMiltiplier=NewDist/LastDist;
-        if (transform.localScale.x * SizeMiltiplier<0.07f && transform.localScale.x * SizeMiltiplier > 0.015f)
+        if (transform.localScale.x * SizeMiltiplier<0.14f && transform.localScale.x * SizeMiltiplier > 0.03f)
         {
             transform.localScale = new Vector3(transform.localScale.x * SizeMiltiplier, transform.localScale.y * SizeMiltiplier, transform.localScale.z * SizeMiltiplier);
         }
         else
         {
-            transform.localScale = new Vector3(0.07f, 0.07f, 0.07f);
+            transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
         }
-        /*Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
+        //Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
         if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
         {
-            transform.GetComponent<Show_name>().enabled = false;
-            transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = false;
-            transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = false;
+            foreach (Transform child in transform)
+                child.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
-           transform.GetComponent<Show_name>().enabled = true;
-           transform.Find("default").transform.GetComponent<MeshRenderer>().enabled = true;
-           transform.Find("default2").transform.GetComponent<MeshRenderer>().enabled = true;
+            foreach (Transform child in transform)
+                child.GetComponent<MeshRenderer>().enabled = true;
 
-        }*/
+        }
         LastDist = Vector3.Distance(Camera.main.transform.position, transform.position);
     }
 }

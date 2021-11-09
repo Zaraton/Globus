@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497296533060801456}
   m_LocalRotation: {x: 0.7053361, y: -0, z: -0, w: 0.70887303}
-  m_LocalPosition: {x: 0, y: -0.0009687654, z: 0}
+  m_LocalPosition: {x: -0.01064, y: 0.00997, z: 0.01068}
   m_LocalScale: {x: -0.00020806205, y: -0.00020806205, z: -0.00020806205}
   m_Children:
   - {fileID: 2856330993732256104}
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 1853962020998062702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3342, y: 2.3342, z: 2.3342}
+  m_LocalScale: {x: 8.29938, y: 8.29938, z: 8.29938}
   m_Children:
   - {fileID: 3025080807065777096}
   - {fileID: 7301905174616871039}
@@ -80,7 +80,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.022, y: 0.022, z: 0.024}
-  m_Center: {x: 0.011, y: -0.011, z: -0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7715853644460201475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +100,28 @@ MonoBehaviour:
   showShadow: 1
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   shadowOffset: {x: 1, y: 1}
-  Information: 
+  Information: "TLE1: 1 43596U 98067PH  20252.21520726  .00044844  00000-0  23470-3
+    0  9996\nTLE2: 2 43596  51.6257 225.0284 0003919  63.0340 297.1062 15.80342949118075\n\u0410\u0440\u0433\u0443\u043C\u0435\u043D\u0442
+    \u043F\u0435\u0440\u0438\u0446\u0435\u043D\u0442\u0440\u0430 \u0432 \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445:
+    \n\u0421\u0440\u0435\u0434\u043D\u044F\u044F \u0430\u043D\u043E\u043C\u0430\u043B\u0438\u044F:
+    \n\u0427\u0430\u0441\u0442\u043E\u0442\u0430 \u043E\u0431\u0440\u0430\u0449\u0435\u043D\u0438\u044F
+    (\u043E\u0431\u043E\u0440\u043E\u0442\u043E\u0432 \u0432 \u0434\u0435\u043D\u044C):
+    \n\u041D\u043E\u043C\u0435\u0440 \u0432\u0438\u0442\u043A\u0430 \u043D\u0430 \u043C\u043E\u043C\u0435\u043D\u0442
+    \u044D\u043F\u043E\u0445\u0438: \n\u042D\u043A\u0441\u0446\u0435\u043D\u0442\u0440\u0438\u0441\u0438\u0442\u0435\u0442:
+    5.90E-04\n\u041D\u0430\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u0435 \u0432
+    \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445: 51.60\n\u041D\u043E\u043C\u0435\u0440
+    \u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0435 COSPAR: 1998-067PH\n\u041D\u043E\u043C\u0435\u0440
+    \u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0435 NORAD: 43956\n\u0410\u043F\u043E\u0433\u0435\u0439:
+    408\n\u041C\u0435\u0441\u0442\u043E \u0437\u0430\u043F\u0443\u0441\u043A\u0430:
+    International Space Station\n\u0417\u0430\u043F\u0443\u0449\u0435\u043D\u043E
+    \u043D\u0430: Manual Deployment\n\u0421\u0442\u0440\u0430\u043D\u0430 \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0430/\u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u0430:
+    Russia\n\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438:
+    Civil\n\u041D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: Space Science\n\u041A\u043B\u0430\u0441\u0441
+    \u043E\u0440\u0431\u0438\u0442\u044B: LEO\n\u0422\u0438\u043F \u043E\u0440\u0431\u0438\u0442\u044B:
+    Non-Polar Inclined\n\u041C\u0430\u0441\u0441\u0430 \u043F\u0440\u0438 \u0437\u0430\u043F\u0443\u0441\u043A\u0435
+    \u0432 \u043A\u0433: 1\n\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A: SPUTNIX
+    Ltd. Sirius Education Center\n\u0421\u0442\u0440\u0430\u043D\u0430 \u0437\u0430\u043A\u0430\u0437\u0447\u0438\u043A\u0430:
+    Russia\n"
   Source1: https://amsat-uk.org/2018/06/01/russian-siriussat-cubesats-to-be-deployed-during-spacewalk/
   Is_On_Scene: 0
   Is_Showing_Name: 0
@@ -215,7 +236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bdd81ada5ed3bf147a56500edbee3672, type: 3}
+  - {fileID: 2100000, guid: 5a3e316f582cdda4bb93f51251995ebc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -259,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8166776709187413378}
   m_LocalRotation: {x: -0.70887303, y: -0, z: -0, w: 0.7053361}
-  m_LocalPosition: {x: 0, y: -0.0207, z: -0.0215}
+  m_LocalPosition: {x: -0.010640001, y: -0.009761234, z: -0.0108199995}
   m_LocalScale: {x: -0.00020806205, y: -0.00020806205, z: -0.00020806205}
   m_Children:
   - {fileID: 2290618845525586394}
@@ -323,7 +344,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bffe620aefa7c5a4ab232119dd7dd823, type: 3}
+  - {fileID: 2100000, guid: 5a3e316f582cdda4bb93f51251995ebc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -356,15 +377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.010640001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.021
+      value: -0.010061233
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0001
+      value: 0.010780001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
       propertyPath: m_LocalRotation.x

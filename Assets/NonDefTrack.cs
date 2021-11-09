@@ -15,6 +15,7 @@ using Vuforia;
 /// Changes made to this file could be overwritten when upgrading the Vuforia version.
 /// When implementing custom event handler behavior, consider inheriting from this class instead.
 /// </summary>
+
 public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
 {
     #region PROTECTED_MEMBER_VARIABLES
@@ -63,7 +64,9 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            OnTrackingFound();
+
+           OnTrackingFound();
+
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
@@ -87,32 +90,10 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
     {
         if (mTrackableBehaviour)
         {
-            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<MeshRenderer>(true);
-            var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
-            var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
-            // mTrackableBehaviour.GetComponent<>
-            // Enable rendering:
-            foreach (var component in rendererComponents)
-                component.enabled = true;
-
-            // Enable colliders:
-            foreach (var component in colliderComponents)
-                component.enabled = true;
-
-            // Enable canvas':
-            foreach (var component in canvasComponents)
-                component.enabled = true;
-            game_state.IsTracking=true;
-
-            if ((game_state.LastTarget)&&(game_state.LastTarget!= game_state.LastTarget.gameObject))
-            {
-                foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
-                    SatsAndSpaceports.SetParent(transform);
-                foreach (Transform SatsAndSpaceports in game_state.LastTarget.transform)
-                    Destroy(SatsAndSpaceports.gameObject);//?????????????????????????????????????????
-
-            }
-            game_state.NewTarget(transform.gameObject);
+            game_state.IsTracking = true;
+            Transform earth = transform.parent.Find("Earth(Clone)");
+            if (earth)
+                earth.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
@@ -121,35 +102,12 @@ public class NonDefTrack : MonoBehaviour, ITrackableEventHandler
     {
         if (mTrackableBehaviour)
         {
-            var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<MeshRenderer>(true);
-            var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
-            var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
-
-
-            // Disable rendering:
-            foreach (var component in rendererComponents)
-            { component.enabled = false; /*Debug.Log("Visible? = " + component.isVisible);*/ }
-
-            // Disable colliders:
-            foreach (var component in colliderComponents)
-                component.enabled = false;
-
-            // Disable canvas':
-            foreach (var component in canvasComponents)
-                component.enabled = false;
-
-            /*int children = this.transform.childCount;
-            for (int i = 0; i < children; ++i)
-            {
-                
-                Transform child = this.transform.GetChild(i);
-                var Sats_and_Ports_MeshRenderer = child.GetComponentsInChildren<MeshRenderer>(true);
-                foreach (var component in Sats_and_Ports_MeshRenderer)
-                    component.enabled = false;
-
-            }*/
 
             game_state.IsTracking = false;
+            Transform earth = transform.parent.Find("Earth(Clone)");
+            if (earth)
+                earth.GetComponent<MeshRenderer>().enabled = false;
+
 
         }
     }

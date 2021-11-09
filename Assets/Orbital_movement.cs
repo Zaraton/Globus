@@ -30,9 +30,9 @@ public class Orbital_movement : MonoBehaviour
         //Transform polar coordinates into decart
         double latit = (coordinate.getLatetude());
         double longit = (coordinate.getLongitude());
-        height = (coordinate.getHeight());
+        height = Math.Abs(coordinate.getHeight());
         if (height > 15000) //If object too far from Earth - make it closer
-            height = height / 2;
+            height = height / 4;
         float x = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Cos(longit * Math.PI / 180);
         float z = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Cos(latit * Math.PI / 180) * (float)Math.Sin(longit * Math.PI / 180);
         float y = (game_state.GameEarthRad + (float)height * game_state.GameToRealEarthCor) * (float)Math.Sin(latit * Math.PI / 180);
@@ -87,11 +87,11 @@ public class Orbital_movement : MonoBehaviour
     void Update()
     {
         oldPos = transform;
-        if (transform.gameObject != game_state.ChoosedObject)
+        if (transform.gameObject != game_state.ChoosedObject) // ДОБАВИТЬ ОПТИМИЗАЦИЮ ПО ТИКАМ
         {
 
             SetOrbitalPosition(game_state.nowtime);
-            /*
+            Debug.DrawRay(transform.position, Camera.main.transform.position - transform.position);
             if (Physics.Raycast(transform.position, Camera.main.transform.position - transform.position) || (!game_state.IsTracking))
             {
                 var rendererComponents = transform.GetComponentsInChildren<MeshRenderer>(true);
@@ -105,7 +105,7 @@ public class Orbital_movement : MonoBehaviour
                 foreach (var component in rendererComponents)
                     component.enabled = true;
                 transform.GetComponent<Show_name>().enabled = true;
-            }*/
+            }
         }
         else //Get model close to camera
         {

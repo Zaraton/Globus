@@ -1,0 +1,479 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1796128808496042986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8310066864745850967}
+  - component: {fileID: 1149997226102242731}
+  - component: {fileID: 2448227571639049063}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8310066864745850967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796128808496042986}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 706841311207328242}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1149997226102242731
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796128808496042986}
+  m_Mesh: {fileID: 4300000, guid: bffe620aefa7c5a4ab232119dd7dd823, type: 3}
+--- !u!23 &2448227571639049063
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796128808496042986}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bffe620aefa7c5a4ab232119dd7dd823, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &2147258630380534799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706841311207328242}
+  m_Layer: 0
+  m_Name: CubeSat top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &706841311207328242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147258630380534799}
+  m_LocalRotation: {x: -0.70887303, y: -0, z: -0, w: 0.7053361}
+  m_LocalPosition: {x: -0.0111, y: -0.0097912345, z: -0.010600001}
+  m_LocalScale: {x: -0.00020806205, y: -0.00020806205, z: -0.00020806205}
+  m_Children:
+  - {fileID: 8310066864745850967}
+  m_Father: {fileID: 6688189847605025206}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90.286995, y: 0, z: 0}
+--- !u!1 &3011022316745961696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5420391780127086821}
+  - component: {fileID: 8372124877351169276}
+  - component: {fileID: 6936667858339382633}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5420391780127086821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011022316745961696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4999451384109886021}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8372124877351169276
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011022316745961696}
+  m_Mesh: {fileID: 4300000, guid: bdd81ada5ed3bf147a56500edbee3672, type: 3}
+--- !u!23 &6936667858339382633
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011022316745961696}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bdd81ada5ed3bf147a56500edbee3672, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &8439808229689670627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6688189847605025206}
+  - component: {fileID: 9098059048448463254}
+  - component: {fileID: 544540274697801614}
+  - component: {fileID: 6701506952605323032}
+  - component: {fileID: 6370364825805221996}
+  m_Layer: 0
+  m_Name: Cubesat 3u
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6688189847605025206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439808229689670627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 8.29938, y: 24.898134, z: 8.29938}
+  m_Children:
+  - {fileID: 4999451384109886021}
+  - {fileID: 706841311207328242}
+  - {fileID: 5219045539848636412}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9098059048448463254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439808229689670627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.022, y: 0.022, z: 0.024}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &544540274697801614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439808229689670627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8ffcb06e905494aae4407f5c3fc5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textSize: 14
+  textFont: {fileID: 0}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  textHeight: 0.019598207
+  showShadow: 1
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
+  shadowOffset: {x: 1, y: 1}
+  Information: "TLE1: 1 47951U 21022V   21311.52642451  .00001967  00000-0  13856-3
+    0  9999\nTLE2: 2 47951  97.5465 210.7210 0021827 178.7947 240.0785 15.05993499
+    34580\n\u0410\u0440\u0433\u0443\u043C\u0435\u043D\u0442 \u043F\u0435\u0440\u0438\u0446\u0435\u043D\u0442\u0440\u0430
+    \u0432 \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445: \n\u0421\u0440\u0435\u0434\u043D\u044F\u044F
+    \u0430\u043D\u043E\u043C\u0430\u043B\u0438\u044F: \n\u0427\u0430\u0441\u0442\u043E\u0442\u0430
+    \u043E\u0431\u0440\u0430\u0449\u0435\u043D\u0438\u044F (\u043E\u0431\u043E\u0440\u043E\u0442\u043E\u0432
+    \u0432 \u0434\u0435\u043D\u044C): \n\u041D\u043E\u043C\u0435\u0440 \u0432\u0438\u0442\u043A\u0430
+    \u043D\u0430 \u043C\u043E\u043C\u0435\u043D\u0442 \u044D\u043F\u043E\u0445\u0438:
+    \n\u042D\u043A\u0441\u0446\u0435\u043D\u0442\u0440\u0438\u0441\u0438\u0442\u0435\u0442:
+    null\n\u041D\u0430\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u0435 \u0432 \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445:
+    null\n\u041C\u0435\u0441\u0442\u043E \u0437\u0430\u043F\u0443\u0441\u043A\u0430:
+    Baikonur Cosmodrome\n\u0417\u0430\u043F\u0443\u0449\u0435\u043D\u043E \u043D\u0430:
+    \u0421\u043E\u044E\u0437-2.1\u0430\n\u0421\u0442\u0440\u0430\u043D\u0430 \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0430/\u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u0430:
+    Russia\n\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438:
+    \u043D\u0430\u0443\u0447\u043D\u043E-\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u043D\u044C\u044B\u0439\n\u041D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435:
+    Remote Sensing\n\u041A\u043B\u0430\u0441\u0441 \u043E\u0440\u0431\u0438\u0442\u044B:
+    LEO\n\u0422\u0438\u043F \u043E\u0440\u0431\u0438\u0442\u044B: Sun-Synchronous\n\u0421\u0442\u0440\u0430\u043D\u0430
+    \u0437\u0430\u043A\u0430\u0437\u0447\u0438\u043A\u0430: Russia\n\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0430\u044F
+    \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F: 22 \u043C\u0430\u0440\u0442\u0430
+    \u0432 9:07 \u043F\u043E \u043C\u043E\u0441\u043A\u043E\u0432\u0441\u043A\u043E\u043C\u0443
+    \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u0431\u044B\u043B \u043E\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u043B\u0435\u043D
+    \u0443\u0441\u043F\u0435\u0448\u043D\u044B\u0439 \u0437\u0430\u043F\u0443\u0441\u043A
+    \u0440\u0430\u043A\u0435\u0442\u044B-\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044F
+    \u0421\u043E\u044E\u0437-2.1\u0430 \u0441 \u0440\u0430\u0437\u0433\u043E\u043D\u043D\u044B\u043C
+    \u0431\u043B\u043E\u043A\u043E\u043C \u0424\u0440\u0435\u0433\u0430\u0442. \u041D\u0430
+    \u0441\u043E\u043B\u043D\u0435\u0447\u043D\u043E-\u0441\u0438\u043D\u0445\u0440\u043E\u043D\u043D\u044B\u0435
+    \u043E\u0440\u0431\u0438\u0442\u044B \u0431\u044B\u043B\u0438 \u0432\u044B\u0432\u0435\u0434\u0435\u043D\u044B
+    38 \u043A\u043E\u0441\u043C\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0430\u043F\u043F\u0430\u0440\u0430\u0442\u043E\u0432
+    \u0438\u0437 18 \u0441\u0442\u0440\u0430\u043D, \u0441\u0440\u0435\u0434\u0438
+    \u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u2013 \u0441\u043F\u0443\u0442\u043D\u0438\u043A
+    \u041D\u0418\u0423 \u0412\u0428\u042D CubeSX-HSE, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
+    \u0437\u0430\u0439\u043C\u0435\u0442\u0441\u044F \u0434\u0438\u0441\u0442\u0430\u043D\u0446\u0438\u043E\u043D\u043D\u044B\u043C
+    \u0437\u043E\u043D\u0434\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u043C
+    \u0417\u0435\u043C\u043B\u0438. \u0422\u0435\u043C \u0436\u0435 \u0440\u0435\u0439\u0441\u043E\u043C
+    \u043D\u0430 \u043E\u0440\u0431\u0438\u0442\u0443 \u0431\u044B\u043B \u0434\u043E\u0441\u0442\u0430\u0432\u043B\u0435\u043D
+    \u0435\u0449\u0435 \u043E\u0434\u0438\u043D \u0441\u043F\u0443\u0442\u043D\u0438\u043A
+    \u2013 \u0441\u043E\u0432\u043C\u0435\u0441\u0442\u043D\u0430\u044F \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430
+    \u041C\u0418\u042D\u041C \u041D\u0418\u0423 \u0412\u0428\u042D, \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438
+    \u0421\u043F\u0443\u0442\u043D\u0438\u043A\u0441 \u0438 \u041E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E
+    \u0446\u0435\u043D\u0442\u0440\u0430 \u0421\u0438\u0440\u0438\u0443\u0441 \u0432
+    \u0440\u0430\u043C\u043A\u0430\u0445 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B
+    \u0434\u043B\u044F \u0448\u043A\u043E\u043B\u044C\u043D\u0438\u043A\u043E\u0432
+    \u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u0432\u044B\u0437\u043E\u0432\u044B,
+    \u0433\u0434\u0435 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u0438\u0441\u0442\u044B
+    \u041C\u0418\u042D\u041C \u0432\u044B\u0441\u0442\u0443\u043F\u0430\u043B\u0438
+    \u0432 \u043A\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u0435\u0439
+    \u0438 \u0440\u0443\u043A\u043E\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439
+    \u043F\u0440\u043E\u0435\u043A\u0442\u0430. \u0414\u0432\u0430 \u0430\u043F\u043F\u0430\u0440\u0430\u0442\u0430
+    \u0441\u0442\u0440\u043E\u0438\u043B\u0438\u0441\u044C \u043E\u0434\u043D\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E
+    \u0438 \u0432\u043E \u043C\u043D\u043E\u0433\u043E\u043C \u0438\u0434\u0435\u043D\u0442\u0438\u0447\u043D\u044B,
+    \u0434\u0430\u0436\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F \u043F\u043E\u0445\u043E\u0436\u0438:
+    CubeSX-HSE \u0438 CubeSX-Sirius-HSE. \u0412\u0435\u0441\u044C \u043F\u0440\u0438\u0435\u043C
+    \u0442\u0435\u043B\u0435\u043C\u0435\u0442\u0440\u0438\u0438 \u0441\u043E \u0441\u043F\u0443\u0442\u043D\u0438\u043A\u0430
+    \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0433\u043E
+    \u0446\u0435\u043D\u0442\u0440\u0430 \u0431\u0443\u0434\u0435\u0442 \u043E\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u043B\u044F\u0442\u044C\u0441\u044F
+    \u0446\u0435\u043D\u0442\u0440\u043E\u043C \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F
+    \u043F\u043E\u043B\u0435\u0442\u0430\u043C\u0438 \u041C\u0418\u042D\u041C \u041D\u0418\u0423
+    \u0412\u0428\u042D, \u0440\u0430\u0437\u0432\u0435\u0440\u043D\u0443\u0442\u043E\u0433\u043E
+    \u0438 \u0444\u0443\u043D\u043A\u0446\u0438\u043E\u043D\u0438\u0440\u0443\u044E\u0449\u0435\u0433\u043E
+    \u0432 \u041C\u0418\u042D\u041C.\n"
+  Source1: https://amsat-uk.org/2018/06/01/russian-siriussat-cubesats-to-be-deployed-during-spacewalk/
+  Is_On_Scene: 0
+  Is_Showing_Name: 0
+--- !u!114 &6701506952605323032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439808229689670627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tle1: 1 47951U 21022V   21311.52642451  .00001967  00000-0  13856-3 0  9999
+  tle2: 2 47951  97.5465 210.7210 0021827 178.7947 240.0785 15.05993499 34580
+  Sat_Name: CUBESX-SIRIUS-HSE
+  target: {fileID: 0}
+  height: 0
+--- !u!23 &6370364825805221996
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439808229689670627}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &8673325124297345597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4999451384109886021}
+  m_Layer: 0
+  m_Name: CubeSat bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4999451384109886021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673325124297345597}
+  m_LocalRotation: {x: 0.7053361, y: -0, z: -0, w: 0.70887303}
+  m_LocalPosition: {x: -0.0111, y: 0.00994, z: 0.0109}
+  m_LocalScale: {x: -0.00020806205, y: -0.00020806205, z: -0.00020806205}
+  m_Children:
+  - {fileID: 5420391780127086821}
+  m_Father: {fileID: 6688189847605025206}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.713005, y: 0, z: 0}
+--- !u!1001 &5219045539848772988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6688189847605025206}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_Name
+      value: CubeSat middle
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0111
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.010091234
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7053361
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70887303
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.00020806205
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -0.00020806205
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0.00020806205
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fdfd4fca58636045bf88157ece88d1d, type: 3}
+--- !u!4 &5219045539848636412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 4fdfd4fca58636045bf88157ece88d1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5219045539848772988}
+  m_PrefabAsset: {fileID: 0}

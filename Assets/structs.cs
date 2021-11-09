@@ -15,7 +15,7 @@ public class SpaceportList
 [Serializable]
 public class Spaceport
 {
-    public string name;
+    public string Name;
     public string Country;
     public string Locationname;
     public double Latitude;
@@ -24,12 +24,11 @@ public class Spaceport
 
     public Spaceport(string name, string country, string locationname, double latitude,double longitude,string info)
     {
-        this.name = name;
+        this.Name = name;
         this.Country = country;
         this.Locationname = locationname;
         this.Latitude = latitude;
         this.Longitude = longitude;
-        this.Info = info;
     }
 }
 

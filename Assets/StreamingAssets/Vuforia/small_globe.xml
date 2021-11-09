@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="instagram" size="1.000000 1.193814" />
+    <ImageTarget name="28_30" size="1.000000 1.131417" />
+    <ImageTarget name="30_62" size="1.000000 1.131417" />
+    <ImageTarget name="30_122" size="1.000000 1.131417" />
+    <ImageTarget name="30_158" size="1.000000 1.131417" />
+    <ImageTarget name="32_-18" size="1.000000 1.131417" />
+    <ImageTarget name="32_75" size="1.000000 1.131417" />
+    <ImageTarget name="32_-65" size="1.000000 1.131417" />
+    <ImageTarget name="30_-100" size="1.000000 1.131417" />
+    <ImageTarget name="32n_137e" size="1.000000 1.131417" />
+    <ImageTarget name="78" size="1.000000 1.131417" />
+    <ImageTarget name="55" size="1.000000 1.131417" />
+    <ImageTarget name="27" size="1.000000 1.131417" />
+    <ImageTarget name="-3" size="1.000000 1.131417" />
+    <ImageTarget name="-35" size="1.000000 1.131417" />
+    <ImageTarget name="-60" size="1.000000 1.131417" />
+    <ImageTarget name="-95" size="1.000000 1.131417" />
+    <ImageTarget name="-115" size="1.000000 1.131417" />
+    <ImageTarget name="-150" size="1.000000 1.131417" />
+    <ImageTarget name="165" size="1.000000 1.131417" />
+    <ImageTarget name="155_0_indonesia" size="1.000000 1.131417" />
+    <ImageTarget name="105_0_indonesia" size="1.000000 1.131417" />
+  </Tracking>
+</QCARConfig>

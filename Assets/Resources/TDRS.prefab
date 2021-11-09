@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7881898774171224737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7881898774171719297}
+  - component: {fileID: 7881898774172522147}
+  - component: {fileID: 7881898774173488227}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7881898774171719297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224737}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7881898774171719299}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7881898774172522147
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224737}
+  m_Mesh: {fileID: 4300000, guid: 870395ef64f976445930b058eefc7f22, type: 3}
+--- !u!23 &7881898774173488227
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224737}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 870395ef64f976445930b058eefc7f22, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &7881898774171224739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7881898774171719299}
+  - component: {fileID: 59745321669753875}
+  - component: {fileID: 318831961387000864}
+  - component: {fileID: 7738753402221631276}
+  m_Layer: 0
+  m_Name: TDRS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7881898774171719299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224739}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children:
+  - {fileID: 7881898774171719297}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &59745321669753875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3408df780d7c71741af4f8ab16342e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tle1: 1 27389U 02011A   20251.40762192 -.00000288  00000-0  00000-0 0  9993
+  tle2: 2 27389   7.6578  66.6638 0022717 282.5528  82.0854  1.00265754 69305
+  Sat_Name: TDRS-9 (Tracking and Data Relay Satellite, TDRS-I)
+  target: {fileID: 0}
+  height: 0
+--- !u!114 &318831961387000864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8ffcb06e905494aae4407f5c3fc5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textSize: 14
+  textFont: {fileID: 0}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  textHeight: 0.118071355
+  showShadow: 1
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
+  shadowOffset: {x: 1, y: 1}
+  Information: "TLE1: 1 27389U 02011A   20251.40762192 -.00000288  00000-0  00000-0
+    0  9993\nTLE2: 2 27389   7.6578  66.6638 0022717 282.5528  82.0854  1.00265754
+    69305\n\u0410\u0440\u0433\u0443\u043C\u0435\u043D\u0442 \u043F\u0435\u0440\u0438\u0446\u0435\u043D\u0442\u0440\u0430
+    \u0432 \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445: \n\u0421\u0440\u0435\u0434\u043D\u044F\u044F
+    \u0430\u043D\u043E\u043C\u0430\u043B\u0438\u044F: \n\u0427\u0430\u0441\u0442\u043E\u0442\u0430
+    \u043E\u0431\u0440\u0430\u0449\u0435\u043D\u0438\u044F (\u043E\u0431\u043E\u0440\u043E\u0442\u043E\u0432
+    \u0432 \u0434\u0435\u043D\u044C): \n\u041D\u043E\u043C\u0435\u0440 \u0432\u0438\u0442\u043A\u0430
+    \u043D\u0430 \u043C\u043E\u043C\u0435\u043D\u0442 \u044D\u043F\u043E\u0445\u0438:
+    \n\u042D\u043A\u0441\u0446\u0435\u043D\u0442\u0440\u0438\u0441\u0438\u0442\u0435\u0442:
+    4.86E-04\n\u041D\u0430\u043A\u043B\u043E\u043D\u0435\u043D\u0438\u0435 \u0432
+    \u0433\u0440\u0430\u0434\u0443\u0441\u0430\u0445: 0.02\n\u041D\u043E\u043C\u0435\u0440
+    \u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0435 COSPAR: 2002-011A\n\u041D\u043E\u043C\u0435\u0440
+    \u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0435 NORAD: 27389\n\u0410\u043F\u043E\u0433\u0435\u0439:
+    35,809\n\u041C\u0435\u0441\u0442\u043E \u0437\u0430\u043F\u0443\u0441\u043A\u0430:
+    Cape Canaveral\n\u0417\u0430\u043F\u0443\u0449\u0435\u043D\u043E \u043D\u0430:
+    Atlas 2A\n\u0421\u0442\u0440\u0430\u043D\u0430 \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0430/\u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u0430:
+    USA\n\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438:
+    Government\n\u041D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435: Communications\n\u041A\u043B\u0430\u0441\u0441
+    \u043E\u0440\u0431\u0438\u0442\u044B: GEO\n\u0428\u0438\u0440\u043E\u0442\u0430
+    \u0433\u0435\u043E\u0441\u0442\u0430\u0446\u0438\u043E\u043D\u0430\u0440\u043D\u043E\u0439
+    \u043E\u0440\u0431\u0438\u0442\u044B: -62.43\n\u041C\u0430\u0441\u0441\u0430 \u043F\u0440\u0438
+    \u0437\u0430\u043F\u0443\u0441\u043A\u0435 \u0432 \u043A\u0433: 3,180\n\u041E\u0436\u0438\u0434\u0430\u0435\u043C\u0430\u044F
+    \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C
+    \u0436\u0438\u0437\u043D\u0438: 11\n\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A:
+    Boeing Satellite Systems\n\u0421\u0442\u0440\u0430\u043D\u0430 \u0437\u0430\u043A\u0430\u0437\u0447\u0438\u043A\u0430:
+    USA\n\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F:
+    TDRS (\u0430\u043D\u0433\u043B. Tracking and Data Relay Satellite \u2014 \u0421\u043F\u0443\u0442\u043D\u0438\u043A
+    \u0441\u043E\u043F\u0440\u043E\u0432\u043E\u0436\u0434\u0435\u043D\u0438\u044F
+    \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0438 \u043F\u0435\u0440\u0435\u0434\u0430\u0447\u0438
+    \u0434\u0430\u043D\u043D\u044B\u0445) \u2014 \u0442\u0438\u043F \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0445
+    \u0433\u0435\u043E\u0441\u0442\u0430\u0446\u0438\u043E\u043D\u0430\u0440\u043D\u044B\u0445
+    \u0441\u043F\u0443\u0442\u043D\u0438\u043A\u043E\u0432 \u0441\u0432\u044F\u0437\u0438,
+    \u0447\u0430\u0441\u0442\u044C \u0441\u0438\u0441\u0442\u0435\u043C\u044B \u0434\u0432\u043E\u0439\u043D\u043E\u0433\u043E
+    \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F Tracking and data
+    relay satellite system (TDRSS), \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u043E\u0439
+    \u0412\u043E\u043E\u0440\u0443\u0436\u0451\u043D\u043D\u044B\u043C\u0438 \u0441\u0438\u043B\u0430\u043C\u0438
+    \u0421\u0428\u0410, \u041D\u0410\u0421\u0410 \u0438 \u0434\u0440\u0443\u0433\u0438\u043C\u0438
+    \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u043C\u0438
+    \u043F\u0440\u0430\u0432\u0438\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u043C\u0438
+    \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u044F\u043C\u0438
+    \u0434\u043B\u044F \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438
+    \u0441\u0432\u044F\u0437\u0438 \u0438 \u043E\u0431\u043C\u0435\u043D\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0435\u0439
+    \u043C\u0435\u0436\u0434\u0443 \u043D\u0438\u0437\u043A\u043E\u043B\u0435\u0442\u044F\u0449\u0438\u043C\u0438
+    \u043E\u0431\u044A\u0435\u043A\u0442\u0430\u043C\u0438 (\u0441\u043F\u0443\u0442\u043D\u0438\u043A\u0430\u043C\u0438,
+    \u041C\u041A\u0421, \u0432\u043E\u0437\u0434\u0443\u0448\u043D\u044B\u043C\u0438
+    \u0448\u0430\u0440\u0430\u043C\u0438, \u0441\u0430\u043C\u043E\u043B\u0435\u0442\u0430\u043C\u0438,
+    \u0432 \u0442\u043E\u043C \u0447\u0438\u0441\u043B\u0435 \u0443\u0434\u0430\u0440\u043D\u044B\u043C\u0438
+    \u0411\u041F\u041B\u0410) \u0438 \u043D\u0430\u0437\u0435\u043C\u043D\u044B\u043C\u0438
+    \u0441\u0442\u0430\u043D\u0446\u0438\u044F\u043C\u0438.\n"
+  Source1: 
+  Is_On_Scene: 0
+  Is_Showing_Name: 0
+--- !u!65 &7738753402221631276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881898774171224739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 3.04, z: 0.43}
+  m_Center: {x: 0, y: 0, z: 0}
